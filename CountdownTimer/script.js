@@ -3,7 +3,7 @@ const hoursSelector = document.querySelector(".hours")
 const minsSelector = document.querySelector(".mins")
 const secondsSelector = document.querySelector(".secs")
 
-const subtractDate = () => {
+const countdownTimer = () => {
     const startNewYearDate = new Date("1 Jan 2023")
     const currentDate = new Date()
 
@@ -19,4 +19,4 @@ const subtractDate = () => {
     secondsSelector.innerHTML = seconds.toString()
 }
 
-setInterval(subtractDate, 1000)
+setInterval(countdownTimer, 1000)
