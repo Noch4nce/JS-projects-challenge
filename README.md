@@ -1,1 +1,1 @@
-# JS-projects-challenge
+# Countdown Timer
