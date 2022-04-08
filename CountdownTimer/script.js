@@ -14,9 +14,13 @@ const countdownTimer = () => {
     const seconds = Math.floor(diff % 60)
 
     daysSelector.innerHTML = days.toString()
-    hoursSelector.innerHTML = hours.toString()
-    minsSelector.innerHTML = minutes.toString()
-    secondsSelector.innerHTML = seconds.toString()
+    hoursSelector.innerHTML = shapeTime(hours.toString())
+    minsSelector.innerHTML = shapeTime(minutes.toString())
+    secondsSelector.innerHTML = shapeTime(seconds.toString())
+}
+
+const shapeTime = (time) => {
+    return time < 10 ? `0${time}` : time
 }
 
 setInterval(countdownTimer, 1000)
