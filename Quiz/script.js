@@ -2,7 +2,7 @@ const question = document.querySelector('.que')
 const nextQueBtn = document.querySelector('.nextQue')
 const variants = document.querySelectorAll('.variant')
 const box = document.querySelector('.box')
-// const option = document.querySelectorAll('.option')
+const option = document.querySelectorAll('.option')
 
 const quizQuestions =
     ['What is the most used programming language in 2021?', 'Who is the President of US?', 'What does HTML stand for?', 'What year was JavaScript launched?']
@@ -12,6 +12,7 @@ const quizOptions =
         '1993', '1995', '2001', 'Voobshe pohyu' ]
 let openingIndexQue = 0
 let openingIndexVariant = 0
+let optionIndex = 0
 
 const initQuiz = () => {
     question.innerHTML = quizQuestions[0]
@@ -19,6 +20,11 @@ const initQuiz = () => {
     variants.forEach((variant) => {
         variant.innerHTML = quizOptions[openingIndexVariant]
         openingIndexVariant += 1
+    })
+
+    option.forEach((el) => {
+        el.value = quizOptions[optionIndex]
+        optionIndex += 1
     })
 }
 
@@ -35,11 +41,16 @@ const nextQuestion = () => {
         openingIndexVariant += 1
     })
 
+    option.forEach((el) => {
+        el.value = quizOptions[optionIndex]
+        optionIndex += 1
+    })
+
     selectOption()
     return question.innerHTML = quizQuestions[nextIndexQue]
 }
 
-const selectOption = (id) => {
+const selectOption = (id, value) => {
     variants.forEach((_, i) => {
         document.getElementById(`option${i+1}`).checked = false
     })
@@ -47,9 +58,9 @@ const selectOption = (id) => {
     if (id) {
         document.getElementById(id).checked = true
     }
+
+    console.log(value)
 }
 
 initQuiz()
 nextQueBtn.addEventListener('click', nextQuestion)
-
-console.log(quizQuestions)
