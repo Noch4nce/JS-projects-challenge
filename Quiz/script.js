@@ -5,6 +5,7 @@ const option = document.querySelectorAll('.option')
 const completion = document.querySelector('.completion')
 const quizQue = document.querySelector('.quizQue')
 const correctAnswersSelector = document.querySelector('.correctAnswers')
+const tryAgainBtn = document.querySelector('.tryAgainBtn')
 
 const quizQuestions =
     ['What is the most used programming language in 2021?', 'Who is the President of US?', 'What does HTML stand for?', 'What year was JavaScript launched?']
@@ -12,13 +13,14 @@ const quizOptions =
     ['Java', 'Python', 'JavaScript', 'C', 'Donald Trump', 'Joe Biden', 'Jason Statham', 'Golovach Lena',
         'Cascading Style Sheet', 'Hyper Terminals Motorboats Lamborginis', 'Hypertext Markup Language', 'JavaScript Object Notation',
         '1993', '1995', '2001', 'Voobshe pohyu']
-const quizAnswers = ['JavaScript', 'Joe Biden', 'Hypertext Markup Language', '1995']
+const quizAnswers = ['Python', 'Joe Biden', 'Hypertext Markup Language', '1995']
 
 let openingIndexQue = 0
 let openingIndexVariant = 0
 let optionIndex = 0
 let userAnswers = ''
 let correctAnswers = 0
+let isChecked = false
 
 const initQuiz = () => {
     question.innerHTML = quizQuestions[0]
@@ -32,11 +34,14 @@ const initQuiz = () => {
         el.value = quizOptions[optionIndex]
         optionIndex += 1
     })
+
+    if (!isChecked) {
+        nextQueBtn.disabled = true
+    }
 }
 
 const nextQuestion = () => {
     const nextIndexQue = openingIndexQue += 1
-    let initIndexOption = 0
 
     variants.forEach((variant) => {
         variant.innerHTML = quizOptions[openingIndexVariant]
@@ -56,6 +61,8 @@ const nextQuestion = () => {
     }
 
     selectOption()
+    nextQueBtn.disabled = true
+    isChecked= false
     return question.innerHTML = quizQuestions[nextIndexQue]
 }
 
@@ -69,6 +76,11 @@ const selectOption = (id, value) => {
     }
 
     userAnswers = value
+
+    if (!isChecked) {
+        nextQueBtn.disabled = false
+        isChecked = true
+    }
 }
 
 const endingQuiz = () => {
@@ -79,3 +91,6 @@ const endingQuiz = () => {
 
 initQuiz()
 nextQueBtn.addEventListener('click', nextQuestion)
+tryAgainBtn.addEventListener('click', () => {
+    document.location.reload()
+})
