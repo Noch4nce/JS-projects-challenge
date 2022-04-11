@@ -8,26 +8,35 @@
 <body>
 
 <div>
-    <h2 class="que">Some question</h2>
-    <div>
+    <div class="quizQue">
+        <h2 class="que">Some question</h2>
         <div>
-            <input class="option" type="checkbox" id="option1" name="firstAnswer" onclick="selectOption(id, value)">
-            <label class="variant" for="option1">Possible answer</label>
+            <div>
+                <input class="option" type="checkbox" id="option1" name="firstAnswer" onclick="selectOption(id, value)">
+                <label class="variant" for="option1">Possible answer</label>
+            </div>
+            <div>
+                <input class="option" type="checkbox" id="option2" name="secondAnswer" onclick="selectOption(id, value)">
+                <label class="variant" for="option2">Possible answer</label>
+            </div>
+            <div>
+                <input class="option" type="checkbox" id="option3" name="thirdAnswer" onclick="selectOption(id, value)">
+                <label class="variant" for="option3">Possible answer</label>
+            </div>
+            <div>
+                <input class="option" type="checkbox" id="option4" name="fourthAnswer" onclick="selectOption(id, value)">
+                <label class="variant" for="option4">Possible answer</label>
+            </div>
         </div>
-        <div class="box">
-            <input class="option" type="checkbox" id="option2" name="secondAnswer" onclick="selectOption(id, value)">
-            <label class="variant" for="option2">Possible answer</label>
-        </div>
-        <div>
-            <input class="option" type="checkbox" id="option3" name="thirdAnswer" onclick="selectOption(id, value)">
-            <label class="variant" for="option3">Possible answer</label>
-        </div>
-        <div>
-            <input class="option" type="checkbox" id="option4" name="fourthAnswer" onclick="selectOption(id, value)">
-            <label class="variant" for="option4">Possible answer</label>
-        </div>
+
+        <button class="nextQue">Next Que</button>
     </div>
-    <button class="nextQue">Next Que</button>
+
+    <div class="completion">
+        <h2>You answered correctly at <br> <span class="correctAnswers">0</span>/4 questions</h2>
+
+        <button>Try again</button>
+    </div>
 </div>
 
 <script src="./script.js"></script>
