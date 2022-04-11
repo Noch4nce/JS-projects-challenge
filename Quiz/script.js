@@ -1,6 +1,8 @@
 const question = document.querySelector('.que')
 const nextQueBtn = document.querySelector('.nextQue')
 const variants = document.querySelectorAll('.variant')
+const box = document.querySelector('.box')
+// const option = document.querySelectorAll('.option')
 
 const quizQuestions =
     ['What is the most used programming language in 2021?', 'Who is the President of US?', 'What does HTML stand for?', 'What year was JavaScript launched?']
@@ -33,9 +35,19 @@ const nextQuestion = () => {
         openingIndexVariant += 1
     })
 
+    selectOption()
     return question.innerHTML = quizQuestions[nextIndexQue]
 }
-console.log(firstAnswer)
+
+const selectOption = (id) => {
+    variants.forEach((_, i) => {
+        document.getElementById(`option${i+1}`).checked = false
+    })
+
+    if (id) {
+        document.getElementById(id).checked = true
+    }
+}
 
 initQuiz()
 nextQueBtn.addEventListener('click', nextQuestion)

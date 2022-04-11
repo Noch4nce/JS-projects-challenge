@@ -11,20 +11,20 @@
     <h2 class="que">Some question</h2>
     <div>
         <div>
-            <input type="checkbox" id="firstAnswer" name="firstAnswer">
-            <label class="variant" for="firstAnswer">Possible answer</label>
+            <input type="checkbox" id="option1" name="firstAnswer" onclick="selectOption(id)">
+            <label class="variant" for="option1">Possible answer</label>
+        </div>
+        <div class="box">
+            <input type="checkbox" id="option2" name="secondAnswer" onclick="selectOption(id)">
+            <label class="variant" for="option2">Possible answer</label>
         </div>
         <div>
-            <input type="checkbox" id="secondAnswer" name="secondAnswer">
-            <label class="variant" for="secondAnswer">Possible answer</label>
+            <input type="checkbox" id="option3" name="thirdAnswer" onclick="selectOption(id)">
+            <label class="variant" for="option3">Possible answer</label>
         </div>
         <div>
-            <input type="checkbox" id="thirdAnswer" name="thirdAnswer">
-            <label class="variant" for="thirdAnswer">Possible answer</label>
-        </div>
-        <div>
-            <input type="checkbox" id="fourthAnswer" name="fourthAnswer">
-            <label class="variant" for="fourthAnswer">Possible answer</label>
+            <input type="checkbox" id="option4" name="fourthAnswer" onclick="selectOption(id)">
+            <label class="variant" for="option4">Possible answer</label>
         </div>
     </div>
     <button class="nextQue">Next Que</button>
