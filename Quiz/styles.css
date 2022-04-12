@@ -6,10 +6,21 @@ body {
     margin: 0;
     padding: 0;
     background: #ffffff;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    overflow: auto;
 }
 
 .container {
-    width: 600px;
+    width: 450px;
+    height: 400px;
     margin: 0 auto;
     box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2);
 }
@@ -17,6 +28,8 @@ body {
 .header {
     display: flex;
     flex-direction: row;
+    box-shadow: 0px -5px 5px -5px rgba(34, 60, 80, 0.2) inset;
+    font-size: 0.8rem;
 }
 
 button {
@@ -28,7 +41,41 @@ button {
 }
 
 img {
-    width: 80px;
+    width: 60px;
+}
+
+.quizQue {
+    margin: 1.5rem;
+}
+
+.queContainer {
+    text-align: center;
+    height: 4rem;
+}
+
+.optionContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+.option {
+    background: #edf2fb;
+    border: 2px solid #ccdbfd;
+    border-radius: 6px;
+    height: 2rem;
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+    padding: 4px;
+}
+
+.variant:before {
+    left: 6px !important;
+    top: 3px !important;
+}
+
+.variant:after {
+    left: 6px !important;
+    top: 3px !important;
 }
 
 .completion {
