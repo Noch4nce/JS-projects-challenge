@@ -75,6 +75,7 @@ const selectOption = (id, value) => {
         document.getElementById(id).checked = true
     }
 
+    console.log(userAnswers)
     userAnswers = value
 
     if (!isChecked) {
@@ -85,7 +86,7 @@ const selectOption = (id, value) => {
 
 const endingQuiz = () => {
     correctAnswersSelector.innerHTML = correctAnswers.toString()
-    completion.style.display = 'block'
+    completion.style.display = 'flex'
     quizQue.style.display = 'none'
 }
 
