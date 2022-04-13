@@ -84,7 +84,7 @@ img {
     flex-direction: column;
 }
 
-.option {
+.optionBlock {
     background: #edf2fb;
     border: 2px solid #ccdbfd;
     border-radius: 6px;
@@ -92,6 +92,10 @@ img {
     margin-bottom: 1rem;
     font-size: 1.2rem;
     padding: 4px;
+}
+
+.optionBlock:hover {
+    background: #e3f2fd;
 }
 
 .variant:before {
