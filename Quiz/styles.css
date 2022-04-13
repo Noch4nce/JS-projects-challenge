@@ -1,0 +1,117 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background: #ffffff;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    overflow: auto;
+}
+
+.container {
+    width: 450px;
+    height: 400px;
+    margin: 0 auto;
+    box-shadow: 0 5px 10px 2px rgba(34, 60, 80, 0.2);
+}
+
+.header {
+    display: flex;
+    flex-direction: row;
+    box-shadow: 0 -5px 5px -5px rgba(34, 60, 80, 0.2) inset;
+    font-size: 0.8rem;
+}
+
+.nextQueBtnContainer {
+    text-align: end;
+    margin-right: 19px;
+}
+
+button {
+    margin: 0;
+    width: auto;
+    overflow: visible;
+    box-shadow: inset 0 1px 0 0 #dcecfb;
+    background: linear-gradient(to bottom, #bddbfa 5%, #80b5ea 100%);
+    background: #bddbfa;
+    border-radius: 6px;
+    border: 1px solid #84bbf3;
+    display: inline-block;
+    cursor: pointer;
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: bold;
+    padding: 6px 24px;
+    text-decoration: none;
+    text-shadow: 0 1px 0 #528ecc;
+}
+
+button:hover {
+    background: linear-gradient(to bottom, #80b5ea 5%, #bddbfa 100%);
+    background: #80b5ea;
+}
+
+button:active {
+    position: relative;
+    top: 1px;
+}
+
+img {
+    width: 60px;
+}
+
+.quizQue {
+    margin: 1.5rem;
+}
+
+.queContainer {
+    text-align: center;
+    height: 4rem;
+}
+
+.optionContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+.optionBlock {
+    background: #edf2fb;
+    border: 2px solid #ccdbfd;
+    border-radius: 6px;
+    height: 2rem;
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+    padding: 4px;
+}
+
+.optionBlock:hover {
+    background: #e3f2fd;
+}
+
+.variant:before {
+    left: 6px !important;
+    top: 3px !important;
+}
+
+.variant:after {
+    left: 6px !important;
+    top: 3px !important;
+}
+
+.completion {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-top: 4rem;
+}
