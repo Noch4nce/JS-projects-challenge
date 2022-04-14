@@ -4,5 +4,21 @@
 
 body {
     margin: 0;
-    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    /*min-height: 100vh;*/
+}
+
+.mainContainer {
+
+}
+
+img {
+    width: 11rem;
+}
+
+.likeIcon {
+    width: 2rem;
 }
