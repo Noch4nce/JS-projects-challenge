@@ -1,7 +1,11 @@
-const recipeImg = document.querySelector('.recipeImg')
+const recipeImgSelector = document.querySelector('.recipeImg')
+const searchSelector = document.querySelector('.search')
 
-const searchFoodRecipes = (meal) => {
-    fetchFoodRecipes(meal).then(data => unpackFoodRecipes(data))
+const searchFoodRecipes = (mealName) => {
+    const searchValue = searchSelector.value
+
+    console.log(searchValue)
+    fetchFoodRecipes(mealName).then(data => unpackFoodRecipes(data))
 }
 
 const fetchFoodRecipes = async (meal) => {
@@ -24,14 +28,7 @@ const unpackFoodRecipes = (dataFoodRecipes) => {
 
         return idMeal
     })
-    recipeImg.src = meals[0].strMealThumb
+
+    recipeImgSelector.src = meals[0].strMealThumb
     console.log(meals[0].strMealThumb, 'qwe')
 }
-
-
-searchFoodRecipes('meat')
-
-
-
-
-
