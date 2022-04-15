@@ -1,6 +1,7 @@
 const recipeImgSelector = document.querySelector('.recipeImg')
 const searchSelector = document.querySelector('.search')
 const headerRecipesSelector = document.querySelector('.headerRecipes')
+const recipesContainer = document.querySelector('.recipesContainer')
 
 const searchFoodRecipes = (mealName) => {
     if (mealName) {
@@ -31,14 +32,25 @@ const fetchFoodRecipes = async (meal) => {
 
 const unpackFoodRecipes = (dataFoodRecipes) => {
     const { meals } = dataFoodRecipes
-    const asd = meals.map(mealInf =>  {
-        // const mealId = mealInf.idMeal
-        const { idMeal } = mealInf
+    recipesContainer.innerHTML = ''
 
-        return idMeal
+    meals.forEach(mealInf =>  {
+        const { strMealThumb, strMeal } = mealInf
+        const recipeBlock = document.createElement('div')
+        recipeBlock.className = 'recipeBlock'
+        recipeBlock.innerHTML = `
+            <img class="recipeImg" src=${strMealThumb} alt="recipe"> 
+            <div>
+                <h3>Name</h3>
+                <img class="likeIcon" src="assets/like.png" alt="like">
+            </div>
+        `
+        recipesContainer.append(recipeBlock)
+        // const recipesMarkup =
+        console.log(strMealThumb)
     })
 
-    recipeImgSelector.src = meals[0].strMealThumb
+    // recipeImgSelector.src = meals[0].strMealThumb
     console.log(meals[0].strMealThumb, 'qwe')
 }
 
