@@ -1,7 +1,11 @@
 const recipeImgSelector = document.querySelector('.recipeImg')
 const searchSelector = document.querySelector('.search')
 const headerRecipesSelector = document.querySelector('.headerRecipes')
-const recipesContainer = document.querySelector('.recipesContainer')
+const recipesContainerSelector = document.querySelector('.recipesContainer')
+const modalFoodRecipesContainerSelector = document.querySelector('.modalFoodRecipesContainer')
+const modalRecipeNameSelector = document.querySelector('.modalRecipeName')
+
+let store = null
 
 const searchFoodRecipes = (mealName) => {
     if (mealName) {
@@ -31,27 +35,62 @@ const fetchFoodRecipes = async (meal) => {
 }
 
 const unpackFoodRecipes = (dataFoodRecipes) => {
-    const { meals } = dataFoodRecipes
-    recipesContainer.innerHTML = ''
+    store = dataFoodRecipes
+    const { meals } = store
+    recipesContainerSelector.innerHTML = ''
 
     meals.forEach(mealInf =>  {
         const { strMealThumb, strMeal } = mealInf
         const recipeBlock = document.createElement('div')
         recipeBlock.className = 'recipeBlock'
         recipeBlock.innerHTML = `
-            <img class="recipeImg" src=${strMealThumb} alt="recipe"> 
+            <img class="recipeImg" id="${strMeal}" src=${strMealThumb} alt="recipe" onclick="showModalRecipes(id)"
             <div>
-                <h3>Name</h3>
+                <h3>${strMeal}</h3>
                 <img class="likeIcon" src="assets/like.png" alt="like">
             </div>
         `
-        recipesContainer.append(recipeBlock)
-        // const recipesMarkup =
-        console.log(strMealThumb)
+        recipesContainerSelector.append(recipeBlock)
+        console.log(strMeal)
+    })
+}
+
+const showModalRecipes = (mealName) => {
+    const { meals } = store
+    modalFoodRecipesContainerSelector.innerHTML = ''
+
+    meals.forEach(mealInf =>  {
+        const { strMealThumb, strMeal } = mealInf
+        console.log(mealInf.strIngredient1, "strMeal")
+        const ingredients = getIngredients(mealInf)
+
+        if (strMeal === mealName) {
+            const modalRecipeBlock = document.createElement('div')
+                modalRecipeBlock.innerHTML = `
+                <h3>${strMeal}</h3>
+                <img class="recipeImg" src="${strMealThumb}" alt="like">
+            `
+            modalFoodRecipesContainerSelector.append(modalRecipeBlock)
+        }
     })
 
-    // recipeImgSelector.src = meals[0].strMealThumb
-    console.log(meals[0].strMealThumb, 'qwe')
+    modalFoodRecipesContainerSelector.style.display = 'flex'
+    // modalRecipeNameSelector.innerText = meals[0].strMeal
+
+    console.log(mealName, 'qwe')
+}
+
+const getIngredients = (meals) => {
+    const keyMeals = Object.keys(meals)
+    const arr = []
+
+    keyMeals.map((key) => {
+        if (key.slice(0, -1) === 'strIngredient') {
+            arr.push(key)
+        }
+    })
+
+    console.log(arr, "ASD")
 }
 
 searchFoodRecipes()

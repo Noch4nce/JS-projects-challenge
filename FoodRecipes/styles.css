@@ -22,3 +22,15 @@ img {
 .likeIcon {
     width: 2rem;
 }
+
+.modalFoodRecipesContainer {
+    display: none;
+    width: 30rem;
+    position: absolute;
+    top: 10%;
+    left: 30%;
+    background: cornflowerblue;
+    margin: 0 auto;
+    flex-direction: column;
+    align-items: center;
+}
