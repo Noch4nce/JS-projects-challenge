@@ -58,39 +58,45 @@ const unpackFoodRecipes = (dataFoodRecipes) => {
 const showModalRecipes = (mealName) => {
     const { meals } = store
     modalFoodRecipesContainerSelector.innerHTML = ''
+    let modalRecipeBlock = null
+    let ingredients = []
 
     meals.forEach(mealInf =>  {
         const { strMealThumb, strMeal } = mealInf
-        console.log(mealInf.strIngredient1, "strMeal")
-        const ingredients = getIngredients(mealInf)
+        ingredients = getIngredients(mealInf)
 
         if (strMeal === mealName) {
-            const modalRecipeBlock = document.createElement('div')
+                modalRecipeBlock = document.createElement('div')
                 modalRecipeBlock.innerHTML = `
                 <h3>${strMeal}</h3>
                 <img class="recipeImg" src="${strMealThumb}" alt="like">
+                <ul class="listIngredients"></ul>
             `
             modalFoodRecipesContainerSelector.append(modalRecipeBlock)
+            ingredients.forEach(ingredient => {
+                const list = document.querySelector('.listIngredients')
+                const li = document.createElement('li')
+                li.innerHTML = mealInf[ingredient]
+
+                list.append(li)
+            })
         }
     })
 
     modalFoodRecipesContainerSelector.style.display = 'flex'
-    // modalRecipeNameSelector.innerText = meals[0].strMeal
-
-    console.log(mealName, 'qwe')
 }
 
 const getIngredients = (meals) => {
     const keyMeals = Object.keys(meals)
-    const arr = []
+    const setIngredients = []
 
     keyMeals.map((key) => {
         if (key.slice(0, -1) === 'strIngredient') {
-            arr.push(key)
+            setIngredients.push(key)
         }
     })
 
-    console.log(arr, "ASD")
+    return setIngredients
 }
 
 searchFoodRecipes()
