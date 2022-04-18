@@ -1,11 +1,14 @@
-const recipeImgSelector = document.querySelector('.recipeImg')
-const searchSelector = document.querySelector('.search')
 const headerRecipesSelector = document.querySelector('.headerRecipes')
 const recipesContainerSelector = document.querySelector('.recipesContainer')
 const modalFoodRecipesContainerSelector = document.querySelector('.modalFoodRecipesContainer')
-const modalRecipeNameSelector = document.querySelector('.modalRecipeName')
+const favoriteContainerSelector = document.querySelector('.favoriteContainer')
 
 let store = null
+const favoriteRecipeNames = []
+const obj = {
+    name: [...favoriteRecipeNames],
+    image: 'qwe'
+}
 
 const searchFoodRecipes = (mealName) => {
     if (mealName) {
@@ -47,7 +50,9 @@ const unpackFoodRecipes = (dataFoodRecipes) => {
             <img class="recipeImg" id="${strMeal}" src=${strMealThumb} alt="recipe" onclick="showModalRecipes(id)"
             <div>
                 <h3>${strMeal}</h3>
-                <img class="likeIcon" src="assets/like.png" alt="like">
+                <button id="${strMeal}" onclick="setFavoriteRecipe(id)">
+                    <img class="likeIcon" src="assets/like.png" alt="like">
+                </button>
             </div>
         `
         recipesContainerSelector.append(recipeBlock)
@@ -105,6 +110,24 @@ const getIngredients = (meals) => {
     })
 
     return { setIngredients, setMeasureIngredients }
+}
+
+const setFavoriteRecipe = (mealName) => {
+    const { meals } = store
+
+    meals.forEach(mealInf =>  {
+        const { strMealThumb, strMeal } = mealInf
+
+        if (strMeal === mealName) {
+            favoriteRecipeNames.push(mealName)
+            const favBlock = document.createElement('div')
+            favBlock.innerHTML = `<h4>${strMeal}</h4>
+                <img src=${strMealThumb} alt="recipe">
+            `
+
+            favoriteContainerSelector.append(favBlock)
+        }
+    })
 }
 
 searchFoodRecipes()
