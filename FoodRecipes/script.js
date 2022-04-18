@@ -49,8 +49,8 @@ const unpackFoodRecipes = (dataFoodRecipes) => {
         recipeBlock.innerHTML = `
             <img class="recipeImg" id="${strMeal}" src=${strMealThumb} alt="recipe" onclick="showModalRecipes(id)"
             <div>
-                <h3>${strMeal}</h3>
-                <button id="${strMeal}" onclick="setFavoriteRecipe(id)">
+                <h3 class="repName">${strMeal}</h3>
+                <button name="${strMeal}" onclick="setFavoriteRecipe(name)">
                     <img class="likeIcon" src="assets/like.png" alt="like">
                 </button>
             </div>
@@ -114,6 +114,9 @@ const getIngredients = (meals) => {
 
 const setFavoriteRecipe = (mealName) => {
     const { meals } = store
+    const favBtn = document.querySelector(`button[name='${mealName}']`)
+    favBtn.disabled = true
+    favBtn.style.background = 'red'
 
     meals.forEach(mealInf =>  {
         const { strMealThumb, strMeal } = mealInf
