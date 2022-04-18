@@ -51,34 +51,37 @@ const unpackFoodRecipes = (dataFoodRecipes) => {
             </div>
         `
         recipesContainerSelector.append(recipeBlock)
-        console.log(strMeal)
     })
 }
 
 const showModalRecipes = (mealName) => {
     const { meals } = store
     modalFoodRecipesContainerSelector.innerHTML = ''
-    let modalRecipeBlock = null
-    let ingredients = []
 
     meals.forEach(mealInf =>  {
-        const { strMealThumb, strMeal } = mealInf
-        ingredients = getIngredients(mealInf)
+        const { strMealThumb, strMeal, strInstructions } = mealInf
 
         if (strMeal === mealName) {
-                modalRecipeBlock = document.createElement('div')
-                modalRecipeBlock.innerHTML = `
+            const { setIngredients, setMeasureIngredients } = getIngredients(mealInf)
+            const modalRecipeBlock = document.createElement('div')
+
+            modalRecipeBlock.innerHTML = `
                 <h3>${strMeal}</h3>
                 <img class="recipeImg" src="${strMealThumb}" alt="like">
+                <p>${strInstructions}</p>
+                <h3>Ingredients:</h3>
                 <ul class="listIngredients"></ul>
             `
             modalFoodRecipesContainerSelector.append(modalRecipeBlock)
-            ingredients.forEach(ingredient => {
+
+            setIngredients.forEach((ingredient, i) => {
                 const list = document.querySelector('.listIngredients')
                 const li = document.createElement('li')
-                li.innerHTML = mealInf[ingredient]
 
-                list.append(li)
+                if (mealInf[ingredient]) {
+                    li.innerHTML = `${mealInf[ingredient]} - ${mealInf[setMeasureIngredients[i]]}`
+                    list.append(li)
+                }
             })
         }
     })
@@ -89,14 +92,19 @@ const showModalRecipes = (mealName) => {
 const getIngredients = (meals) => {
     const keyMeals = Object.keys(meals)
     const setIngredients = []
+    const setMeasureIngredients = []
 
     keyMeals.map((key) => {
-        if (key.slice(0, -1) === 'strIngredient') {
+        if (key.slice(0, -1) === 'strIngredient' || key.slice(0, -2) === 'strIngredient') {
             setIngredients.push(key)
+        }
+
+        if (key.slice(0, -1) === 'strMeasure' || key.slice(0, -2) === 'strMeasure') {
+            setMeasureIngredients.push(key)
         }
     })
 
-    return setIngredients
+    return { setIngredients, setMeasureIngredients }
 }
 
 searchFoodRecipes()
