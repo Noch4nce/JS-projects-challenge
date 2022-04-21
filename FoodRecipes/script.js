@@ -4,10 +4,17 @@ const modalFoodRecipesContainerSelector = document.querySelector('.modalFoodReci
 const favoriteContainerSelector = document.querySelector('.favoriteContainer')
 
 let store = null
-const favoriteRecipeNames = []
-const obj = {
-    name: [...favoriteRecipeNames],
-    image: 'qwe'
+const dataFavoriteFoodRecipes = []
+
+const initFoodRecipes = () => {
+    const dataStorageRecipes = localStorage.getItem('favRecipe')
+    searchFoodRecipes()
+
+    if (dataStorageRecipes) {
+        const localFavoriteFoodRecipes = JSON.parse(dataStorageRecipes)
+
+        storageFavoriteRecipeUI(localFavoriteFoodRecipes)
+    }
 }
 
 const searchFoodRecipes = (mealName) => {
@@ -122,15 +129,33 @@ const setFavoriteRecipe = (mealName) => {
         const { strMealThumb, strMeal } = mealInf
 
         if (strMeal === mealName) {
-            favoriteRecipeNames.push(mealName)
+            dataFavoriteFoodRecipes.push({
+                name: strMeal,
+                image: strMealThumb
+            })
+
             const favBlock = document.createElement('div')
             favBlock.innerHTML = `<h4>${strMeal}</h4>
                 <img src=${strMealThumb} alt="recipe">
             `
-
             favoriteContainerSelector.append(favBlock)
+
+            localStorage.setItem('favRecipe', JSON.stringify(dataFavoriteFoodRecipes))
         }
     })
 }
 
-searchFoodRecipes()
+const storageFavoriteRecipeUI = (favoriteRecipes) => {
+    favoriteRecipes.forEach(favoriteRecipe => {
+        const { name, image } = favoriteRecipe
+        const favBlock = document.createElement('div')
+        favBlock.innerHTML = `<h4>${name}</h4>
+            <img src=${image} alt="recipe">
+        `
+
+        favoriteContainerSelector.append(favBlock)
+        dataFavoriteFoodRecipes.push(favoriteRecipe)
+    })
+}
+
+initFoodRecipes()
