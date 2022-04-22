@@ -126,17 +126,31 @@ const setFavoriteRecipe = (mealName) => {
     favBtn.style.background = 'red'
 
     meals.forEach(mealInf =>  {
-        const { strMealThumb, strMeal } = mealInf
+        const { strMealThumb, strMeal, strInstructions } = mealInf
 
         if (strMeal === mealName) {
+            const { setIngredients, setMeasureIngredients } = getIngredients(mealInf)
+            const ingredientsValue = []
+            const measureValue = []
+
+            setIngredients.forEach((ingredient, i) => {
+                if (mealInf[ingredient]) {
+                    ingredientsValue.push(mealInf[ingredient])
+                    measureValue.push(mealInf[setMeasureIngredients[i]])
+                }
+            })
+
             dataFavoriteFoodRecipes.push({
                 name: strMeal,
-                image: strMealThumb
+                image: strMealThumb,
+                instruction: strInstructions,
+                ingredients: ingredientsValue,
+                measure: measureValue
             })
 
             const favBlock = document.createElement('div')
             favBlock.innerHTML = `<h4>${strMeal}</h4>
-                <img src=${strMealThumb} alt="recipe">
+                <img id="${strMeal}" src="${strMealThumb}" onclick="showModalRecipes(id)" alt="recipe">
             `
             favoriteContainerSelector.append(favBlock)
 
@@ -150,12 +164,43 @@ const storageFavoriteRecipeUI = (favoriteRecipes) => {
         const { name, image } = favoriteRecipe
         const favBlock = document.createElement('div')
         favBlock.innerHTML = `<h4>${name}</h4>
-            <img src=${image} alt="recipe">
+            <img id="${name}" src="${image}" alt="recipe" onclick="showModalFavoriteRecipes(id)">
         `
 
         favoriteContainerSelector.append(favBlock)
         dataFavoriteFoodRecipes.push(favoriteRecipe)
     })
+}
+
+const showModalFavoriteRecipes = (currentName) => {
+    modalFoodRecipesContainerSelector.innerHTML = ''
+
+    dataFavoriteFoodRecipes.forEach(mealInf =>  {
+        const { name, image, instruction, ingredients, measure } = mealInf
+
+        if (name === currentName) {
+            const modalRecipeBlock = document.createElement('div')
+
+            modalRecipeBlock.innerHTML = `
+                <h3>${name}</h3>
+                <img class="recipeImg" src="${image}" alt="like">
+                <p>${instruction}</p>
+                <h3>Ingredients:</h3>
+                <ul class="listIngredients"></ul>
+            `
+            modalFoodRecipesContainerSelector.append(modalRecipeBlock)
+
+            ingredients.forEach((ingredient, i) => {
+                const list = document.querySelector('.listIngredients')
+                const li = document.createElement('li')
+
+                li.innerHTML = `${ingredient} - ${measure[i]}`
+                list.append(li)
+            })
+        }
+    })
+
+    modalFoodRecipesContainerSelector.style.display = 'flex'
 }
 
 initFoodRecipes()
