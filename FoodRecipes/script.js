@@ -13,7 +13,7 @@ const initFoodRecipes = () => {
     if (dataStorageRecipes) {
         const localFavoriteFoodRecipes = JSON.parse(dataStorageRecipes)
 
-        storageFavoriteRecipeUI(localFavoriteFoodRecipes)
+        // storageFavoriteRecipeUI(localFavoriteFoodRecipes)
     }
 }
 
@@ -132,7 +132,7 @@ const setFavoriteRecipe = (mealName) => {
 
     meals.forEach(mealInf =>  {
         const { strMealThumb, strMeal, strInstructions } = mealInf
-
+        console.log(mealInf, "mealInf")
         if (strMeal === mealName) {
             const { setIngredients, setMeasureIngredients } = getIngredients(mealInf)
             const ingredientsValue = []
@@ -154,10 +154,17 @@ const setFavoriteRecipe = (mealName) => {
             })
 
             const favBlock = document.createElement('div')
+            favBlock.className = 'favBlock'
             favBlock.innerHTML = `<h4>${strMeal}</h4>
+                <button class="favBtn"">DELETE</button>
                 <img id="${strMeal}" src="${strMealThumb}" onclick="showModalRecipes(id)" alt="recipe">
             `
             favoriteContainerSelector.append(favBlock)
+            const favBtnSelector = document.querySelectorAll('.favBtn')
+
+            favBtnSelector.forEach((favBtn) => {
+                favBtn.addEventListener('click', (event) => deleteFavBlock(event))
+            })
 
             localStorage.setItem('favRecipe', JSON.stringify(dataFavoriteFoodRecipes))
         }
@@ -207,6 +214,12 @@ const showModalFavoriteRecipes = (currentName) => {
     })
 
     modalFoodRecipesContainerSelector.style.display = 'flex'
+}
+
+const deleteFavBlock = (event) => {
+    const favBlockParentNode = event.target.parentNode
+
+    favBlockParentNode.remove()
 }
 
 initFoodRecipes()
