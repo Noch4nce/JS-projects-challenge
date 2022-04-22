@@ -187,6 +187,7 @@ const showModalFavoriteRecipes = (currentName) => {
             const modalRecipeBlock = document.createElement('div')
 
             modalRecipeBlock.innerHTML = `
+                <img class="close" src="./assets/close.png" onclick="closeModalRecipes()" alt="close">
                 <h3>${name}</h3>
                 <img class="recipeImg" src="${image}" alt="like">
                 <p>${instruction}</p>
