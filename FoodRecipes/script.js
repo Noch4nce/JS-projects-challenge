@@ -78,8 +78,9 @@ const showModalRecipes = (mealName) => {
             const modalRecipeBlock = document.createElement('div')
 
             modalRecipeBlock.innerHTML = `
+                <img class="close" src="./assets/close.png" onclick="closeModalRecipes()" alt="close">
                 <h3>${strMeal}</h3>
-                <img class="recipeImg" src="${strMealThumb}" alt="like">
+                <img class="recipeImg" src="${strMealThumb}" alt="modalRecipe">
                 <p>${strInstructions}</p>
                 <h3>Ingredients:</h3>
                 <ul class="listIngredients"></ul>
@@ -99,6 +100,10 @@ const showModalRecipes = (mealName) => {
     })
 
     modalFoodRecipesContainerSelector.style.display = 'flex'
+}
+
+const closeModalRecipes = () => {
+    modalFoodRecipesContainerSelector.style.display = 'none'
 }
 
 const getIngredients = (meals) => {
