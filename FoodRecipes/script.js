@@ -13,7 +13,7 @@ const initFoodRecipes = () => {
     if (dataStorageRecipes) {
         const localFavoriteFoodRecipes = JSON.parse(dataStorageRecipes)
 
-        // storageFavoriteRecipeUI(localFavoriteFoodRecipes)
+        storageFavoriteRecipeUI(localFavoriteFoodRecipes)
     }
 }
 
@@ -131,8 +131,8 @@ const setFavoriteRecipe = (mealName) => {
     favBtn.style.background = 'red'
 
     meals.forEach(mealInf =>  {
-        const { strMealThumb, strMeal, strInstructions } = mealInf
-        console.log(mealInf, "mealInf")
+        const { idMeal, strMealThumb, strMeal, strInstructions } = mealInf
+
         if (strMeal === mealName) {
             const { setIngredients, setMeasureIngredients } = getIngredients(mealInf)
             const ingredientsValue = []
@@ -146,6 +146,7 @@ const setFavoriteRecipe = (mealName) => {
             })
 
             dataFavoriteFoodRecipes.push({
+                id: idMeal,
                 name: strMeal,
                 image: strMealThumb,
                 instruction: strInstructions,
@@ -156,7 +157,7 @@ const setFavoriteRecipe = (mealName) => {
             const favBlock = document.createElement('div')
             favBlock.className = 'favBlock'
             favBlock.innerHTML = `<h4>${strMeal}</h4>
-                <button class="favBtn"">DELETE</button>
+                <button id="${idMeal}" class="favBtn"">DELETE</button>
                 <img id="${strMeal}" src="${strMealThumb}" onclick="showModalRecipes(id)" alt="recipe">
             `
             favoriteContainerSelector.append(favBlock)
@@ -173,14 +174,21 @@ const setFavoriteRecipe = (mealName) => {
 
 const storageFavoriteRecipeUI = (favoriteRecipes) => {
     favoriteRecipes.forEach(favoriteRecipe => {
-        const { name, image } = favoriteRecipe
+        const { id, name, image } = favoriteRecipe
         const favBlock = document.createElement('div')
         favBlock.innerHTML = `<h4>${name}</h4>
+            <button id="${id}" class="favBtn"">DELETE</button>
             <img id="${name}" src="${image}" alt="recipe" onclick="showModalFavoriteRecipes(id)">
         `
-
         favoriteContainerSelector.append(favBlock)
         dataFavoriteFoodRecipes.push(favoriteRecipe)
+
+        const favBtnSelector = document.querySelectorAll('.favBtn')
+        console.log(favBtnSelector, "favBtnSelector")
+
+        favBtnSelector.forEach((favBtn) => {
+            favBtn.addEventListener('click', (event) => deleteFavBlock(event))
+        })
     })
 }
 
@@ -218,6 +226,17 @@ const showModalFavoriteRecipes = (currentName) => {
 
 const deleteFavBlock = (event) => {
     const favBlockParentNode = event.target.parentNode
+    const currentFavBlockId = event.target.id
+
+    dataFavoriteFoodRecipes.forEach((favRec, index) => {
+        const { id } = favRec
+
+        if (id === currentFavBlockId) {
+            dataFavoriteFoodRecipes.splice(index, 1)
+
+            localStorage.setItem('favRecipe', JSON.stringify(dataFavoriteFoodRecipes))
+        }
+    })
 
     favBlockParentNode.remove()
 }
