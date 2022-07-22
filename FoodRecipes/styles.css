@@ -9,6 +9,8 @@ body {
     justify-content: center;
     margin: 0 auto;
     min-height: 100vh;
+    /*font-family: 'Edu VIC WA NT Beginner', cursive;*/
+    font-family: 'Karla', sans-serif;
     background-color: #edede9;
 }
 

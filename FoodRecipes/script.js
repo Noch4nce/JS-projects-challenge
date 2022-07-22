@@ -121,7 +121,6 @@ const getIngredients = (meals) => {
         }
     })
 
-    console.log({setIngredients}, 'setIngredients')
     return { setIngredients, setMeasureIngredients }
 }
 
@@ -185,7 +184,6 @@ const storageFavoriteRecipeUI = (favoriteRecipes) => {
         dataFavoriteFoodRecipes.push(favoriteRecipe)
 
         const favBtnSelector = document.querySelectorAll('.favBtn')
-        console.log(favBtnSelector, "favBtnSelector")
 
         favBtnSelector.forEach((favBtn) => {
             favBtn.addEventListener('click', (event) => deleteFavBlock(event))
