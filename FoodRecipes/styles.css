@@ -17,6 +17,47 @@ body {
 .mainContainer {
     width: 400px;
     background-color: #ffffff;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 10%;
+}
+
+.title {
+    width: 280px;
+    text-align: center;
+}
+
+.search_container {
+    position: relative;
+}
+
+.search_container::before {
+    content: "";
+    background-image: url("./assets/searchIcon.png");
+    width: 25px;
+    height: 25px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 10px;
+    left: 8px;
+}
+
+.search {
+    background: #e9ecef;
+    padding: 10px 35px;
+    width: 260px;
+    border-radius: 20px;
+    border: none;
+    outline: none;
+    min-height: 45px;
+}
+
+.search:focus {
+    border: 1px solid #ced4da;
 }
 
 img {
