@@ -121,6 +121,7 @@ const getIngredients = (meals) => {
         }
     })
 
+    console.log({setIngredients}, 'setIngredients')
     return { setIngredients, setMeasureIngredients }
 }
 

@@ -8,11 +8,13 @@ body {
     align-items: center;
     justify-content: center;
     margin: 0 auto;
-    /*min-height: 100vh;*/
+    min-height: 100vh;
+    background-color: #edede9;
 }
 
 .mainContainer {
-
+    width: 400px;
+    background-color: #ffffff;
 }
 
 img {
