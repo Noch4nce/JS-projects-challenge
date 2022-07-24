@@ -36,7 +36,6 @@ button {
 
 .search_container {
     position: relative;
-    margin-bottom: 20px;
 }
 
 .search_container::before {
@@ -97,7 +96,7 @@ button {
 
 .recipe_img:hover {
     cursor: pointer;
-    box-shadow: 2px 2px 2px rgba(34, 60, 80, 0.1);
+    box-shadow: 2px 2px 2px rgba(34, 60, 80, 0.2);
 }
 
 .recipe_name_block {
@@ -117,6 +116,71 @@ button {
 
 .likeIcon:hover {
     cursor: pointer;
+}
+
+.favorite_main {
+    width: 280px;
+    margin-bottom: 10px;
+}
+
+.favorite_main-title {
+    text-align: center;
+    margin: 8px 0;
+}
+
+.favoriteContainer {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.favBlock {
+    margin-right: 8px;
+    margin-bottom: 5px;
+    max-width: 62px;
+}
+
+.favorite_content {
+    position: relative;
+}
+
+.favorite_image {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+}
+
+.favorite_image:hover {
+    cursor: pointer;
+    box-shadow: 2px 2px 2px rgba(34, 60, 80, 0.2);
+}
+
+.favorite_delete-img {
+    width: 20px;
+    height: 20px;
+}
+
+.favBtn {
+    position: absolute;
+    left: 40px;
+    cursor: pointer;
+    padding: 0;
+    width: 20px;
+    height: 20px;
+    opacity: 0;
+}
+
+.favorite_title {
+    font-family: 'Edu VIC WA NT Beginner', cursive;
+    margin: 0;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.favBlock:hover > .favorite_content > .favBtn {
+    opacity: 1;
 }
 
 .modalFoodRecipesContainer {

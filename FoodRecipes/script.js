@@ -129,7 +129,6 @@ const setFavoriteRecipe = (mealName) => {
     const favBtn = document.querySelector(`button[name='${mealName}']`)
     const likeIcon = favBtn.firstElementChild
     favBtn.disabled = true
-    favBtn.style.background = 'red'
     likeIcon.src = './assets/likeFilled.png'
 
     meals.forEach(mealInf =>  {
@@ -158,9 +157,13 @@ const setFavoriteRecipe = (mealName) => {
 
             const favBlock = document.createElement('div')
             favBlock.className = 'favBlock'
-            favBlock.innerHTML = `<h4>${strMeal}</h4>
-                <button id="${idMeal}" class="favBtn"">DELETE</button>
-                <img id="${strMeal}" src="${strMealThumb}" onclick="showModalRecipes(id)" alt="recipe">
+            favBlock.innerHTML = `
+                <div class="favorite_content">
+                     <img class="favorite_image" id="${strMeal}" src="${strMealThumb}" onclick="showModalRecipes(id)" alt="recipe">
+                     
+                     <img id="${idMeal}" class="favBtn favorite_delete-img" src="./assets/del.png">
+                </div>
+                <h4 class="favorite_title">${strMeal}</h4>
             `
             favoriteContainerSelector.append(favBlock)
             const favBtnSelector = document.querySelectorAll('.favBtn')
@@ -178,9 +181,14 @@ const storageFavoriteRecipeUI = (favoriteRecipes) => {
     favoriteRecipes.forEach(favoriteRecipe => {
         const { id, name, image } = favoriteRecipe
         const favBlock = document.createElement('div')
-        favBlock.innerHTML = `<h4>${name}</h4>
-            <button id="${id}" class="favBtn"">DELETE</button>
-            <img id="${name}" src="${image}" alt="recipe" onclick="showModalFavoriteRecipes(id)">
+        favBlock.className = 'favBlock'
+        favBlock.innerHTML = `
+            <div class="favorite_content">
+                <img class="favorite_image" id="${name}" src="${image}" onclick="showModalFavoriteRecipes(id)" alt="recipe">
+                
+                <img id="${id}" class="favBtn favorite_delete-img" src="./assets/del.png">
+            </div>
+            <h4 class="favorite_title">${name}</h4>
         `
         favoriteContainerSelector.append(favBlock)
         dataFavoriteFoodRecipes.push(favoriteRecipe)
@@ -226,7 +234,7 @@ const showModalFavoriteRecipes = (currentName) => {
 }
 
 const deleteFavBlock = (event) => {
-    const favBlockParentNode = event.target.parentNode
+    const favBlockParentNode = event.target.parentNode.parentNode
     const currentFavBlockId = event.target.id
 
     dataFavoriteFoodRecipes.forEach((favRec, index) => {
