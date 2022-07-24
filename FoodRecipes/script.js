@@ -1,4 +1,4 @@
-const headerRecipesSelector = document.querySelector('.headerRecipes')
+const headerRecipesSelector = document.querySelector('.header_recipes')
 const recipesContainerSelector = document.querySelector('.recipesContainer')
 const modalFoodRecipesContainerSelector = document.querySelector('.modalFoodRecipesContainer')
 const favoriteContainerSelector = document.querySelector('.favoriteContainer')
@@ -51,18 +51,18 @@ const unpackFoodRecipes = (dataFoodRecipes) => {
 
     meals.forEach(mealInf =>  {
         const { strMealThumb, strMeal } = mealInf
-        const recipeBlock = document.createElement('div')
-        recipeBlock.className = 'recipeBlock'
-        recipeBlock.innerHTML = `
-            <img class="recipeImg" id="${strMeal}" src=${strMealThumb} alt="recipe" onclick="showModalRecipes(id)"
-            <div>
+        const recipe_block = document.createElement('div')
+        recipe_block.className = 'recipe_block'
+        recipe_block.innerHTML = `
+            <img class="recipe_img" id="${strMeal}" src=${strMealThumb} alt="recipe" onclick="showModalRecipes(id)">
+            <div class="recipe_name_block">
                 <h3 class="repName">${strMeal}</h3>
                 <button name="${strMeal}" onclick="setFavoriteRecipe(name)">
-                    <img class="likeIcon" src="assets/like.png" alt="like">
+                    <img class="likeIcon" src="assets/icons8-like-49.png" alt="like">
                 </button>
             </div>
         `
-        recipesContainerSelector.append(recipeBlock)
+        recipesContainerSelector.append(recipe_block)
     })
 }
 
@@ -80,7 +80,7 @@ const showModalRecipes = (mealName) => {
             modalRecipeBlock.innerHTML = `
                 <img class="close" src="./assets/close.png" onclick="closeModalRecipes()" alt="close">
                 <h3>${strMeal}</h3>
-                <img class="recipeImg" src="${strMealThumb}" alt="modalRecipe">
+                <img class="recipe_img" src="${strMealThumb}" alt="modalRecipe">
                 <p>${strInstructions}</p>
                 <h3>Ingredients:</h3>
                 <ul class="listIngredients"></ul>
@@ -203,7 +203,7 @@ const showModalFavoriteRecipes = (currentName) => {
             modalRecipeBlock.innerHTML = `
                 <img class="close" src="./assets/close.png" onclick="closeModalRecipes()" alt="close">
                 <h3>${name}</h3>
-                <img class="recipeImg" src="${image}" alt="like">
+                <img class="recipe_img" src="${image}" alt="like">
                 <p>${instruction}</p>
                 <h3>Ingredients:</h3>
                 <ul class="listIngredients"></ul>

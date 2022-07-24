@@ -14,6 +14,11 @@ body {
     background-color: #edede9;
 }
 
+button {
+    border: none;
+    background: none;
+}
+
 .mainContainer {
     width: 400px;
     background-color: #ffffff;
@@ -31,6 +36,7 @@ body {
 
 .search_container {
     position: relative;
+    margin-bottom: 20px;
 }
 
 .search_container::before {
@@ -60,12 +66,57 @@ body {
     border: 1px solid #ced4da;
 }
 
-img {
-    width: 11rem;
+.recipes_content {
+    position: relative;
+    width: 250px;
+}
+
+.header_recipes {
+    position: absolute;
+    background-color: #f5f3f4;
+    border-radius: 2px;
+    width: 160px;
+    text-align: center;
+    font-size: 18px;
+}
+
+.recipe_block {
+    display: flex;
+    flex-direction: column;
+    height: 300px;
+    background-color: #f5f3f4;
+    border-radius: 20px;
+    box-shadow: 2px 2px 2px rgba(34, 60, 80, 0.2);
+}
+
+.recipe_img {
+    margin-bottom: 16px;
+    border-radius: 20px;
+    height: 230px;
+}
+
+.recipe_img:hover {
+    cursor: pointer;
+    box-shadow: 2px 2px 2px rgba(34, 60, 80, 0.1);
+}
+
+.recipe_name_block {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.repName {
+    font-family: 'Edu VIC WA NT Beginner', cursive;
+    margin: 0;
 }
 
 .likeIcon {
-    width: 2rem;
+    width: 36px;
+}
+
+.likeIcon:hover {
+    cursor: pointer;
 }
 
 .modalFoodRecipesContainer {
