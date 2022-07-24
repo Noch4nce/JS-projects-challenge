@@ -19,7 +19,7 @@ const initFoodRecipes = () => {
 
 const searchFoodRecipes = (mealName) => {
     if (mealName) {
-        headerRecipesSelector.innerText = 'Recommended'
+        headerRecipesSelector.innerText = ''
     }
 
     fetchFoodRecipes(mealName).then(data => unpackFoodRecipes(data))
@@ -127,8 +127,10 @@ const getIngredients = (meals) => {
 const setFavoriteRecipe = (mealName) => {
     const { meals } = store
     const favBtn = document.querySelector(`button[name='${mealName}']`)
+    const likeIcon = favBtn.firstElementChild
     favBtn.disabled = true
     favBtn.style.background = 'red'
+    likeIcon.src = './assets/likeFilled.png'
 
     meals.forEach(mealInf =>  {
         const { idMeal, strMealThumb, strMeal, strInstructions } = mealInf
