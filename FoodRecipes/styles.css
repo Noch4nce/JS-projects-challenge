@@ -191,12 +191,40 @@ button {
 
 .modalFoodRecipesContainer {
     display: none;
-    width: 30rem;
-    position: absolute;
-    top: 10%;
-    left: 30%;
-    background: cornflowerblue;
-    margin: 0 auto;
-    flex-direction: column;
-    align-items: center;
+    width: 600px;
+    border-radius: 20px;
+    background: #ffffff;
 }
+
+.recipe_modal-block {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: 0 14px;
+}
+
+.recipe_modal-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 50px;
+    cursor: pointer;
+}
+
+.recipe_modal-title {
+    text-align: center;
+    width: 500px;
+    margin: 20px 30px;
+}
+
+.recipe_modal-img {
+    border-radius: 20px;
+    height: 320px;
+    width: 500px;
+    margin: 0 auto;
+}
+
+.ingredients_title {
+    margin: 0;
+}
+

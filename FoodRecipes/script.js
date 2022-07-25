@@ -1,3 +1,5 @@
+const bodySelector = document.querySelector('.body')
+const mainContainerSelector = document.querySelector('.mainContainer')
 const headerRecipesSelector = document.querySelector('.header_recipes')
 const recipesContainerSelector = document.querySelector('.recipesContainer')
 const modalFoodRecipesContainerSelector = document.querySelector('.modalFoodRecipesContainer')
@@ -69,6 +71,8 @@ const unpackFoodRecipes = (dataFoodRecipes) => {
 const showModalRecipes = (mealName) => {
     const { meals } = store
     modalFoodRecipesContainerSelector.innerHTML = ''
+    bodySelector.style.backgroundColor = 'rgba(0, 0, 0, 0.3)'
+    mainContainerSelector.style.display = 'none'
 
     meals.forEach(mealInf =>  {
         const { strMealThumb, strMeal, strInstructions } = mealInf
@@ -76,13 +80,14 @@ const showModalRecipes = (mealName) => {
         if (strMeal === mealName) {
             const { setIngredients, setMeasureIngredients } = getIngredients(mealInf)
             const modalRecipeBlock = document.createElement('div')
+            modalRecipeBlock.className = 'recipe_modal-block'
 
             modalRecipeBlock.innerHTML = `
-                <img class="close" src="./assets/close.png" onclick="closeModalRecipes()" alt="close">
-                <h3>${strMeal}</h3>
-                <img class="recipe_img" src="${strMealThumb}" alt="modalRecipe">
+                <img class="recipe_modal-close" src="./assets/close.png" onclick="closeModalRecipes()" alt="close">
+                <h2 class="recipe_modal-title">${strMeal}</h2>
+                <img class="recipe_modal-img" src="${strMealThumb}" alt="modalRecipe">
                 <p>${strInstructions}</p>
-                <h3>Ingredients:</h3>
+                <h3 class="ingredients_title">Ingredients:</h3>
                 <ul class="listIngredients"></ul>
             `
             modalFoodRecipesContainerSelector.append(modalRecipeBlock)
@@ -99,11 +104,13 @@ const showModalRecipes = (mealName) => {
         }
     })
 
-    modalFoodRecipesContainerSelector.style.display = 'flex'
+    modalFoodRecipesContainerSelector.style.display = 'block'
 }
 
 const closeModalRecipes = () => {
     modalFoodRecipesContainerSelector.style.display = 'none'
+    bodySelector.style.backgroundColor = '#edede9'
+    mainContainerSelector.style.display = 'flex'
 }
 
 const getIngredients = (meals) => {
@@ -203,19 +210,22 @@ const storageFavoriteRecipeUI = (favoriteRecipes) => {
 
 const showModalFavoriteRecipes = (currentName) => {
     modalFoodRecipesContainerSelector.innerHTML = ''
+    bodySelector.style.backgroundColor = 'rgba(0, 0, 0, 0.3)'
+    mainContainerSelector.style.display = 'none'
 
     dataFavoriteFoodRecipes.forEach(mealInf =>  {
         const { name, image, instruction, ingredients, measure } = mealInf
 
         if (name === currentName) {
             const modalRecipeBlock = document.createElement('div')
+            modalRecipeBlock.className = 'recipe_modal-block'
 
             modalRecipeBlock.innerHTML = `
-                <img class="close" src="./assets/close.png" onclick="closeModalRecipes()" alt="close">
-                <h3>${name}</h3>
-                <img class="recipe_img" src="${image}" alt="like">
+                <img class="recipe_modal-close" src="./assets/close.png" onclick="closeModalRecipes()" alt="close">
+                <h2 class="recipe_modal-title">${name}</h2>
+                <img class="recipe_modal-img" src="${image}" alt="like">
                 <p>${instruction}</p>
-                <h3>Ingredients:</h3>
+                <h3 class="ingredients_title">Ingredients:</h3>
                 <ul class="listIngredients"></ul>
             `
             modalFoodRecipesContainerSelector.append(modalRecipeBlock)
@@ -230,7 +240,7 @@ const showModalFavoriteRecipes = (currentName) => {
         }
     })
 
-    modalFoodRecipesContainerSelector.style.display = 'flex'
+    modalFoodRecipesContainerSelector.style.display = 'block'
 }
 
 const deleteFavBlock = (event) => {
