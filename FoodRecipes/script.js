@@ -65,7 +65,7 @@ const unpackFoodRecipes = (dataFoodRecipes) => {
             <div class="recipe_name_block">
                 <h3 class="repName">${strMeal}</h3>
                 <button name="${strMeal}" onclick="setFavoriteRecipe(name)">
-                    <img class="likeIcon" src="assets/icons8-like-49.png" alt="like">
+                    <img class="likeIcon" src="./assets/icons8-like-49.png" alt="like">
                 </button>
             </div>
         `
@@ -253,8 +253,10 @@ const showModalFavoriteRecipes = (currentName) => {
 }
 
 const deleteFavBlock = (event) => {
+    const recipesImageSelector = document.querySelectorAll('.recipe_img')
     const favBlockParentNode = event.target.parentNode.parentNode
     const currentFavBlockId = event.target.id
+    const currentFavName = event.target.previousElementSibling.id
 
     dataFavoriteFoodRecipes.forEach((favRec, index) => {
         const { id } = favRec
@@ -263,6 +265,18 @@ const deleteFavBlock = (event) => {
             dataFavoriteFoodRecipes.splice(index, 1)
 
             localStorage.setItem('favRecipe', JSON.stringify(dataFavoriteFoodRecipes))
+        }
+    })
+
+    recipesImageSelector.forEach(img => {
+        const currentImgId = img.id
+        const currentLikeBtn = document.querySelector(`button[name='${currentImgId}']`)
+
+        if (currentFavName === currentImgId) {
+            const name = document.querySelector('.likeIcon')
+
+            currentLikeBtn.firstElementChild.src = './assets/icons8-like-49.png'
+            currentLikeBtn.disabled = false
         }
     })
 
