@@ -4,6 +4,7 @@ const headerRecipesSelector = document.querySelector('.header_recipes')
 const recipesContainerSelector = document.querySelector('.recipesContainer')
 const modalFoodRecipesContainerSelector = document.querySelector('.modalFoodRecipesContainer')
 const favoriteContainerSelector = document.querySelector('.favoriteContainer')
+const favoriteMainTitleSelector = document.querySelector('.favorite_main-title')
 
 let store = null
 const dataFavoriteFoodRecipes = []
@@ -16,6 +17,10 @@ const initFoodRecipes = () => {
         const localFavoriteFoodRecipes = JSON.parse(dataStorageRecipes)
 
         storageFavoriteRecipeUI(localFavoriteFoodRecipes)
+    }
+
+    if (dataFavoriteFoodRecipes.length === 0) {
+        favoriteMainTitleSelector.innerHTML = ''
     }
 }
 
@@ -182,6 +187,10 @@ const setFavoriteRecipe = (mealName) => {
             localStorage.setItem('favRecipe', JSON.stringify(dataFavoriteFoodRecipes))
         }
     })
+
+    if (dataFavoriteFoodRecipes.length !== 0) {
+        favoriteMainTitleSelector.innerHTML = 'Favorite recipes'
+    }
 }
 
 const storageFavoriteRecipeUI = (favoriteRecipes) => {
@@ -258,6 +267,10 @@ const deleteFavBlock = (event) => {
     })
 
     favBlockParentNode.remove()
+
+    if (dataFavoriteFoodRecipes.length === 0) {
+        favoriteMainTitleSelector.innerHTML = ''
+    }
 }
 
 initFoodRecipes()
