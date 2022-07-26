@@ -1,0 +1,230 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    min-height: 100vh;
+    /*font-family: 'Edu VIC WA NT Beginner', cursive;*/
+    font-family: 'Karla', sans-serif;
+    background-color: #edede9;
+}
+
+button {
+    border: none;
+    background: none;
+}
+
+.mainContainer {
+    width: 400px;
+    background-color: #ffffff;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 30px;
+}
+
+.title {
+    width: 280px;
+    text-align: center;
+}
+
+.search_container {
+    position: relative;
+}
+
+.search_container::before {
+    content: "";
+    background-image: url("./assets/searchIcon.png");
+    width: 25px;
+    height: 25px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 10px;
+    left: 8px;
+}
+
+.search {
+    background: #e9ecef;
+    padding: 10px 35px;
+    width: 260px;
+    border-radius: 20px;
+    border: none;
+    outline: none;
+    min-height: 45px;
+}
+
+.search:focus {
+    border: 1px solid #ced4da;
+}
+
+.recipes_content {
+    position: relative;
+    width: 250px;
+    margin-bottom: 16px
+}
+
+.header_recipes {
+    position: absolute;
+    background-color: #f5f3f4;
+    border-radius: 2px;
+    width: 160px;
+    text-align: center;
+    font-size: 18px;
+}
+
+.recipe_block {
+    display: flex;
+    flex-direction: column;
+    height: 300px;
+    background-color: #f5f3f4;
+    border-radius: 20px;
+    margin-bottom: 10px;
+    box-shadow: 2px 2px 2px rgba(34, 60, 80, 0.2);
+}
+
+.recipe_img {
+    margin-bottom: 16px;
+    border-radius: 20px;
+    height: 230px;
+}
+
+.recipe_img:hover {
+    cursor: pointer;
+    box-shadow: 2px 2px 2px rgba(34, 60, 80, 0.2);
+}
+
+.recipe_name_block {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 8px;
+}
+
+.repName {
+    font-family: 'Edu VIC WA NT Beginner', cursive;
+    margin: 0;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.likeIcon {
+    width: 36px;
+}
+
+.likeIcon:hover {
+    cursor: pointer;
+}
+
+.favorite_main {
+    width: 280px;
+    margin-bottom: 10px;
+}
+
+.favorite_main-title {
+    text-align: center;
+    margin: 8px 0;
+}
+
+.favoriteContainer {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.favBlock {
+    margin-right: 8px;
+    margin-bottom: 5px;
+    max-width: 62px;
+}
+
+.favorite_content {
+    position: relative;
+}
+
+.favorite_image {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+}
+
+.favorite_image:hover {
+    cursor: pointer;
+    box-shadow: 2px 2px 2px rgba(34, 60, 80, 0.2);
+}
+
+.favorite_delete-img {
+    width: 20px;
+    height: 20px;
+}
+
+.favBtn {
+    position: absolute;
+    left: 40px;
+    cursor: pointer;
+    padding: 0;
+    width: 20px;
+    height: 20px;
+    opacity: 0;
+}
+
+.favorite_title {
+    font-family: 'Edu VIC WA NT Beginner', cursive;
+    margin: 0;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.favBlock:hover > .favorite_content > .favBtn {
+    opacity: 1;
+}
+
+.modalFoodRecipesContainer {
+    display: none;
+    width: 600px;
+    border-radius: 20px;
+    background: #ffffff;
+}
+
+.recipe_modal-block {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: 0 14px;
+}
+
+.recipe_modal-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 50px;
+    cursor: pointer;
+}
+
+.recipe_modal-title {
+    text-align: center;
+    width: 500px;
+    margin: 20px 30px;
+}
+
+.recipe_modal-img {
+    border-radius: 20px;
+    height: 320px;
+    width: 500px;
+    margin: 0 auto;
+}
+
+.ingredients_title {
+    margin: 0;
+}
+
