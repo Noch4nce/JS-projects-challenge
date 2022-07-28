@@ -1,51 +1,92 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap');
 
 * {
-    box-sizing: border-box;
+	box-sizing: border-box;
 }
 
 body {
-    margin: 0;
-    padding: 0;
-    font-family: 'Lato', sans-serif;
+	padding: 0;
     margin: 0 auto;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    font-family: 'Lato', sans-serif;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 
 button {
-    border: none;
-    background: transparent;
+	border: none;
+	background: transparent;
+}
+
+p {
+	margin: 0;
 }
 
 .main_container {
-    background: #528ecc;
-    height: 100vh;
-    max-width: 1400px;
-    border-radius: 20px;
-    display: flex;
-    justify-content: center;
+	background: #528ecc;
+	height: 100vh;
+	width: 1500px;
+	border-radius: 20px;
+	display: flex;
+	/*margin: 30px 0px;*/
 }
 
 .sidebar_container {
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+	padding: 20px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 }
 
 .sidebar_btn {
-    width: 40px;
-    height: 40px;
-    font-size: 30px;
-    color: #ffffff;
-    background-color: #0f0c0c;
-    border-radius: 50%;
+	width: 40px;
+	height: 40px;
+	font-size: 30px;
+	color: #ffffff;
+	background-color: #0f0c0c;
+	border-radius: 50%;
 }
 
 .hr {
-    margin: 0;
-    background-color: rgba(0, 0, 0, 0.2);
-    border: .5px solid rgba(0, 0, 0, 0.2);
+	margin: 0;
+	background-color: rgba(0, 0, 0, 0.2);
+	border: 0.5px solid rgba(0, 0, 0, 0.2);
+}
+
+.cards_container {
+	padding: 10px 30px;
+}
+
+.card_content {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.card_block {
+	width: 300px;
+	height: 280px;
+	padding: 20px;
+	margin-bottom: 30px;
+	margin-right: 20px;
+	border-radius: 20px;
+	background-color: #ced4da;
+}
+
+.card_input {
+	height: 190px;
+	word-wrap: break-word;
+	overflow: hidden;
+	margin-bottom: 10px;
+    font-size: 18px;
+}
+
+.card_action {
+	position: relative;
+	display: flex;
+	justify-content: space-between;
+}
+
+.card_btn img {
+	width: 40px;
+	height: 40px;
 }
