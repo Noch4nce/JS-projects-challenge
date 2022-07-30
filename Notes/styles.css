@@ -6,8 +6,8 @@
 
 body {
 	padding: 0;
-    margin: 0 auto;
-    font-family: 'Lato', sans-serif;
+	margin: 0 auto;
+	font-family: 'Lato', sans-serif;
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -63,6 +63,7 @@ p {
 }
 
 .card_block {
+	position: relative;
 	width: 300px;
 	height: 280px;
 	padding: 20px;
@@ -77,7 +78,7 @@ p {
 	word-wrap: break-word;
 	overflow: hidden;
 	margin-bottom: 10px;
-    font-size: 18px;
+	font-size: 18px;
 }
 
 .card_action {
@@ -89,4 +90,26 @@ p {
 .card_btn img {
 	width: 40px;
 	height: 40px;
+}
+
+.card_text {
+	display: none;
+	border: none;
+	overflow: auto;
+	outline: none;
+	box-shadow: none;
+	resize: none;
+	position: absolute;
+	width: 300px;
+	height: 200px;
+	top: 0;
+	left: 0;
+	border-radius: 20px 20px 0 0;
+	font-size: 18px;
+	font-family: 'Lato', sans-serif;
+	padding: 20px;
+}
+
+.show {
+	display: block;
 }

@@ -6,35 +6,42 @@ const addCard = () => {
 	cardBlock.className = 'card_block'
 
 	cardBlock.innerHTML = `
+		<textarea class='card_text'></textarea>
 		<p class='card_input'>YO</p>
 		<div class='card_action'>
 			<button class='card_btn card_delete'>
-				<img src='./assets/bin.png' alt='trash' />
+				<img class='delete' src='./assets/bin.png' alt='trash' />
 			</button>
-			<button class='card_btn'>
-				<img src='./assets/pencil.png' alt='edit' />
+			<button class='card_btn card_edit'>
+				<img class='edit' src='./assets/pencil.png' alt='edit' />
 			</button>
 		</div>
 	`
 
 	cardsContentSelector.append(cardBlock)
-
-	const cardDelete = document.querySelectorAll('.card_action .card_delete')
-
-	cardDelete.forEach((el) => {
-		el.addEventListener('click', (e) => {
-			deleteCard(e)
-		})
-	})
 }
 
-const deleteCard = (e) => {
-	const currentCard = e.target
-	const parentCardBlock = currentCard.closest('div.card_block')
+const actionCard = (target) => {
+	const parentCardBlock = target.closest('div.card_block')
+	const cardInput = parentCardBlock.firstElementChild
 
-	parentCardBlock.remove()
+	if (target.className === 'edit') {
+		cardInput.classList.toggle('show')
+	}
+
+	if (target.className === 'delete') {
+		parentCardBlock.remove()
+	}
 }
 
 sidebarButtonSelector.addEventListener('click', () => {
 	addCard()
+})
+
+cardsContentSelector.addEventListener('click', (e) => {
+	let target = e.target
+
+	if (target.tagName === 'IMG') {
+		actionCard(target)
+	}
 })
