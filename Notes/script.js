@@ -7,7 +7,7 @@ const addCard = () => {
 
 	cardBlock.innerHTML = `
 		<textarea class='card_text'></textarea>
-		<p class='card_input'>YO</p>
+		<p class='card_input'></p>
 		<div class='card_action'>
 			<button class='card_btn card_delete'>
 				<img class='delete' src='./assets/bin.png' alt='trash' />
@@ -23,10 +23,15 @@ const addCard = () => {
 
 const actionCard = (target) => {
 	const parentCardBlock = target.closest('div.card_block')
-	const cardInput = parentCardBlock.firstElementChild
+	const cardText = parentCardBlock.firstElementChild
+	const cardInput = parentCardBlock.childNodes[3]
+	const text = cardText.value
 
-	if (target.className === 'edit') {
-		cardInput.classList.toggle('show')
+	if (target.className === 'edit' && !cardText.classList.contains('show')) {
+		cardText.classList.add('show')
+	} else {
+		cardText.classList.remove('show')
+		cardInput.innerHTML = text
 	}
 
 	if (target.className === 'delete') {
