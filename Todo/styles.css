@@ -11,6 +11,7 @@ body {
 	background-color: #528ecc;
 	font-weight: bold;
 	font-size: 20px;
+	color: #444;
 }
 
 ul,
@@ -25,6 +26,7 @@ li {
 	font-size: 180px;
 	color: #632429;
 	margin: 80px 0;
+	opacity: 0.8;
 }
 
 .main_container {
@@ -35,7 +37,7 @@ li {
 }
 
 .todo_form {
-	width: 393px;
+	width: 400px;
 	margin-bottom: 30px;
 }
 
@@ -43,14 +45,20 @@ li {
 	font-size: 30px;
 	padding: 14px;
 	border: none;
+	width: 100%;
 }
 .todo_container {
 	word-wrap: break-word;
 }
 
 .todo_container li {
+	cursor: pointer;
 	font-size: 32px;
 	padding: 14px;
 	background-color: #ffffff;
 	border-top: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.todo_footer {
+	color: black;
 }
