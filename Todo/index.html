@@ -9,7 +9,7 @@
 		<div class="main_container">
 			<h1 class="todo_title">todos</h1>
 
-			<form class="todo_form">
+			<form onsubmit="return false" class="todo_form">
 				<input
 					class="todo_input"
 					type="text"
@@ -17,14 +17,10 @@
 					autocomplete="off"
 				/>
 
-				<ul class="todo_container">
-					<li>sqwss dqwv sqwss dqwv sqwss dqwv sqwss dqwv sqwss dqwv</li>
-					<li>WQE</li>
-					<li>QWE</li>
-				</ul>
+				<ul class="todo_container"></ul>
 			</form>
 
-			<small class='todo_footer'>
+			<small class="todo_footer">
 				Left click to toggle complete.
 				<br />
 				Right click to delete the todo.
