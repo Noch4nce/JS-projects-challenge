@@ -17,12 +17,18 @@ const addTodo = (inputValue) => {
 
 	todoBlock.addEventListener('contextmenu', (event) => {
 		event.preventDefault()
-		console.log('qqweqw')
+		const currentTodo = event.target
+
+		deleteTodo(currentTodo)
 	})
 }
 
 const todoComplete = (currentTodo) => {
 	currentTodo.classList.toggle('todo_complete')
+}
+
+const deleteTodo = (currentTodo) => {
+	currentTodo.remove()
 }
 
 formSelector.addEventListener('submit', (event) => {
