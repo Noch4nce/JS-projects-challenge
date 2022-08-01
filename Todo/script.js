@@ -8,6 +8,21 @@ const addTodo = (inputValue) => {
 
 	todoContainerSelector.appendChild(todoBlock)
 	formSelector.reset()
+
+	todoBlock.addEventListener('click', (event) => {
+		const currentTodo = event.target
+
+		todoComplete(currentTodo)
+	})
+
+	todoBlock.addEventListener('contextmenu', (event) => {
+		event.preventDefault()
+		console.log('qqweqw')
+	})
+}
+
+const todoComplete = (currentTodo) => {
+	currentTodo.classList.toggle('todo_complete')
 }
 
 formSelector.addEventListener('submit', (event) => {

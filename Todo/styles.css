@@ -62,3 +62,8 @@ li {
 .todo_footer {
 	color: black;
 }
+
+.todo_complete {
+	text-decoration: line-through;
+	color: #858585;
+}
