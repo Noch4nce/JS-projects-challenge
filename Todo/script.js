@@ -2,47 +2,25 @@ const formSelector = document.querySelector('.todo_form')
 const inputSelector = document.querySelector('.todo_input')
 const todoContainerSelector = document.querySelector('.todo_container')
 
-const textData = []
-let todoIds = 0
-
 const init = () => {
 	const todoData = localStorage.getItem('todos')
 	const todoParse = JSON.parse(todoData)
 
-	addTodo(todoParse)
+	if (todoParse) {
+		todoParse.forEach((todoEl) => {
+			const { todoText, todoClassComplete } = todoEl
+
+			addTodo(todoText, todoClassComplete)
+		})
+	}
 }
 
-const addTodo = (inputValue, todoParse = '') => {
+const addTodo = (inputValue, todoClassComplete) => {
 	const todoBlock = document.createElement('li')
+	todoBlock.innerHTML = inputValue
 
-	todoParse
-		? todoParse.forEach((todoEl) => {
-			const { todoText, todoClass } = todoEl
-
-			const todoBlock = document.createElement('li')
-			todoBlock.innerHTML = todoText
-
-			if (todoClass) {
-				todoBlock.classList.add(todoClass)
-			}
-
-			textData.push({
-				id: todoIds,
-				todoText: inputValue,
-				todoClass: ''
-			})
-			todoIds++
-			todoContainerSelector.appendChild(todoBlock)
-		})
-		: ''
-	console.log(inputValue, "inputValue")
-	console.log(Boolean(inputValue), "inputValue")
-	if (inputValue) {
-		todoBlock.id = String(todoIds)
-		todoBlock.innerHTML = inputValue
-
-		todoContainerSelector.appendChild(todoBlock)
-		formSelector.reset()
+	if (todoClassComplete) {
+		todoBlock.classList.add(todoClassComplete)
 	}
 
 	todoBlock.addEventListener('click', (event) => {
@@ -50,6 +28,7 @@ const addTodo = (inputValue, todoParse = '') => {
 		const currentTodoId = currentTodo.id
 
 		todoComplete(currentTodo, currentTodoId)
+		updateLs()
 	})
 
 	todoBlock.addEventListener('contextmenu', (event) => {
@@ -57,20 +36,33 @@ const addTodo = (inputValue, todoParse = '') => {
 		const currentTodo = event.target
 
 		deleteTodo(currentTodo)
+		updateLs()
 	})
 
-	console.log(textData, 'textData')
-	localStorage.setItem('todos', JSON.stringify(textData))
+	todoContainerSelector.appendChild(todoBlock)
+	formSelector.reset()
+
+	updateLs(inputValue)
 }
 
-const todoComplete = (currentTodo, currentTodoId) => {
+const updateLs = () => {
+	const todoList = document.querySelectorAll('li')
+	const todoData = []
+
+	todoList.forEach((todoEl) => {
+		const isTodoClass = todoEl.classList.contains('todo_complete')
+
+		todoData.push({
+			todoText: todoEl.innerText,
+			todoClassComplete: isTodoClass ? 'todo_complete' : ''
+		})
+	})
+
+	localStorage.setItem('todos', JSON.stringify(todoData))
+}
+
+const todoComplete = (currentTodo) => {
 	currentTodo.classList.toggle('todo_complete')
-
-	textData[currentTodoId].todoClass
-		? (textData[currentTodoId].todoClass = '')
-		: (textData[currentTodoId].todoClass = 'todo_complete')
-
-	localStorage.setItem('todos', JSON.stringify(textData))
 }
 
 const deleteTodo = (currentTodo) => {
