@@ -1,0 +1,19 @@
+* {
+	box-sizing: border-box;
+}
+
+body {
+	padding: 0;
+	margin: 0 auto;
+	background-color: #528ecc;
+	font-weight: bold;
+	font-size: 20px;
+}
+
+ul,
+li {
+	margin: 0;
+	padding: 0;
+	text-indent: 0;
+	list-style-type: none;
+}
