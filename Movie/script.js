@@ -32,58 +32,28 @@ const createMovieBlocks = (movieData) => {
 			/>
 			<div class="movie_info">
 				<h3>${title}</h3>
-				${changeMovieRatingColor(vote_average)}
-<!--				<span class="movie_rating">${vote_average}</span>-->
+				<span class="movie_rating">${vote_average}</span>
 			</div>
 		`
-		const movieRatingSelector = document.querySelector('.movie_rating')
-
-		// if (vote_average <= 5) {
-		// 	movieRatingSelector.style.color = 'red'
-		// }
-		//
-		// if (vote_average > 5 && vote_average < 8) {
-		// 	movieRatingSelector.style.color = 'yellow'
-		// }
-		//
-		// if (vote_average >= 8) {
-		// 	movieRatingSelector.style.color = 'green'
-		// }
 
 		mainContainerSelector.appendChild(movieBlock)
 	})
 
-	// changeMovieRatingColor(movieData)
+	changeMovieRatingColor()
 }
 
-const changeMovieRatingColor = (vote_average) => {
-	if (vote_average <= 5) {
-		return `<span class="movie_rating red">${vote_average}</span>`
-	} else if (vote_average > 5 && vote_average < 8) {
-		return `<span class="movie_rating yellow">${vote_average}</span>`
-	} else if (vote_average >= 8) {
-		return `<span class="movie_rating green">${vote_average}</span>`
-	}
-}
+const changeMovieRatingColor = () => {
+	const movieRatingSelector = document.querySelectorAll('.movie_rating')
 
-// const changeMovieRatingColor = (movieData) => {
-// 	const movieRatingSelector = document.querySelectorAll('.movie_rating')
-// 	console.log(movieRatingSelector, 'vote_average')
-// 	movieData.results.forEach((movieInf) => {
-// 		const { vote_average } = movieInf.results
-//
-// 		if (vote_average <= 5) {
-// 			movieRatingSelector.style.color = 'red'
-// 		}
-//
-// 		if (vote_average > 5 && vote_average < 8) {
-// 			movieRatingSelector.style.color = 'yellow'
-// 		}
-//
-// 		if (vote_average >= 8) {
-// 			movieRatingSelector.style.color = 'green'
-// 		}
-// 	})
-// }
+	movieRatingSelector.forEach((rating) => {
+		if (rating.innerText <= 5) {
+			rating.classList.add('red')
+		} else if (rating.innerText > 5 && rating.innerText < 8) {
+			rating.classList.add('yellow')
+		} else if (rating.innerText >= 8) {
+			rating.classList.add('green')
+		}
+	})
+}
 
 init()
