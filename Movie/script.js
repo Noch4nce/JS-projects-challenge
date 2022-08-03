@@ -49,8 +49,8 @@ const changeMovieRatingColor = () => {
 		if (rating.innerText <= 5) {
 			rating.classList.add('red')
 		} else if (rating.innerText > 5 && rating.innerText < 8) {
-			rating.classList.add('yellow')
-		} else if (rating.innerText >= 8) {
+			rating.classList.add('orange')
+		} else {
 			rating.classList.add('green')
 		}
 	})
