@@ -5,10 +5,10 @@ const SEARCHAPI =
 	'https://api.themoviedb.org/3/search/movie?&api_key=04c35731a5ee918f014970082a0088b1&query='
 
 const getMoviesData = async () => {
-	const resp = await fetch(APIURL)
+	// const resp = await fetch(APIURL)
 	const result = await resp.json()
 
 	console.log(result, "result")
 }
 
-getMoviesData()
+// getMoviesData()
