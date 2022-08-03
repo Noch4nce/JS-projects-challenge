@@ -67,7 +67,7 @@ h3 {
 .movie_rating {
 	width: 36px;
 	height: 30px;
-	display: flex;;
+	display: flex;
 	align-items: center;
 	justify-content: center;
 	font-weight: bold;
