@@ -27,7 +27,7 @@ const createMovieBlocks = (movieData) => {
 
 		movieBlock.innerHTML = `
 			<img
-				src=${IMG_PATH}${poster_path}
+				src=${IMG_PATH + poster_path}
 				alt=${title}
 			/>
 			<div class="movie_info">
