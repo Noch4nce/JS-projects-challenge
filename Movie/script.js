@@ -32,12 +32,58 @@ const createMovieBlocks = (movieData) => {
 			/>
 			<div class="movie_info">
 				<h3>${title}</h3>
-				<span class="movie_rating">${vote_average}</span>
+				${changeMovieRatingColor(vote_average)}
+<!--				<span class="movie_rating">${vote_average}</span>-->
 			</div>
 		`
+		const movieRatingSelector = document.querySelector('.movie_rating')
+
+		// if (vote_average <= 5) {
+		// 	movieRatingSelector.style.color = 'red'
+		// }
+		//
+		// if (vote_average > 5 && vote_average < 8) {
+		// 	movieRatingSelector.style.color = 'yellow'
+		// }
+		//
+		// if (vote_average >= 8) {
+		// 	movieRatingSelector.style.color = 'green'
+		// }
 
 		mainContainerSelector.appendChild(movieBlock)
 	})
+
+	// changeMovieRatingColor(movieData)
 }
+
+const changeMovieRatingColor = (vote_average) => {
+	if (vote_average <= 5) {
+		return `<span class="movie_rating red">${vote_average}</span>`
+	} else if (vote_average > 5 && vote_average < 8) {
+		return `<span class="movie_rating yellow">${vote_average}</span>`
+	} else if (vote_average >= 8) {
+		return `<span class="movie_rating green">${vote_average}</span>`
+	}
+}
+
+// const changeMovieRatingColor = (movieData) => {
+// 	const movieRatingSelector = document.querySelectorAll('.movie_rating')
+// 	console.log(movieRatingSelector, 'vote_average')
+// 	movieData.results.forEach((movieInf) => {
+// 		const { vote_average } = movieInf.results
+//
+// 		if (vote_average <= 5) {
+// 			movieRatingSelector.style.color = 'red'
+// 		}
+//
+// 		if (vote_average > 5 && vote_average < 8) {
+// 			movieRatingSelector.style.color = 'yellow'
+// 		}
+//
+// 		if (vote_average >= 8) {
+// 			movieRatingSelector.style.color = 'green'
+// 		}
+// 	})
+// }
 
 init()
