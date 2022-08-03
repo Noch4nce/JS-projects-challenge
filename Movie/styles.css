@@ -5,15 +5,11 @@
 body {
 	padding: 0;
 	margin: 0 auto;
-	background-color: #528ecc;
-	font-weight: bold;
-	font-size: 20px;
+	background-color: #22254b;
 }
 
 img {
-	width: 300px;
-	height: 380px;
-	border-radius: 3px;
+	width: 100%;
 }
 
 h3 {
@@ -21,24 +17,24 @@ h3 {
 }
 
 .movie_header {
-	background-color: #043773;
-	padding: 18px;
+	background-color: #373b69;
+	padding: 16px;
 	display: flex;
 	justify-content: flex-end;
 }
 
 .movie_input {
 	font-size: 18px;
-	background-color: #043773;
+	background-color: transparent;
+	font-family: inherit;
 	padding: 10px 16px;
 	border-radius: 30px;
-	border: 2px solid #001732;
+	border: 2px solid #22254b;
 	color: #ffffff;
 }
 
 .movie_input:focus {
-	background-color: #001e40;
-	border: 2px solid #001732;
+	background-color: #22254b;
 	outline: none;
 }
 
@@ -52,25 +48,29 @@ h3 {
 }
 
 .movie_block {
-	margin: 12px 16px 16px 16px;
-	background-color: #024b9a;
-	color: #ffffff;
+	margin: 16px;
+	background-color: #373b69;
 	border-radius: 3px;
+	box-shadow: 0 4px 5px rgba(0, 0, 0, 0.3);
+	width: 300px;
 }
 
 .movie_info {
+	color: #eee;
 	display: flex;
+	align-items: center;
 	justify-content: space-between;
-	padding: 10px 20px 10px 20px;
-	margin-bottom: 20px;
+	padding: 10px 16px 16px;
+	letter-spacing: 0.5px;
 }
 
 .movie_rating {
+	width: 36px;
+	height: 30px;
 	display: flex;;
 	align-items: center;
 	justify-content: center;
-	width: 36px;
-	height: 30px;
-	background-color: #001732;
+	font-weight: bold;
+	background-color: #22254b;
 	border-radius: 3px;
 }
