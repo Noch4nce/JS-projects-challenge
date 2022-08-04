@@ -5,9 +5,11 @@ const SEARCH_API =
 	'https://api.themoviedb.org/3/search/movie?&api_key=04c35731a5ee918f014970082a0088b1&query='
 
 const mainContainerSelector = document.querySelector('.main_container')
+const movieInputSelector = document.querySelector('.movie_input')
+const movieFormSelector = document.querySelector('.movie_form')
 
 const init = () => {
-	getMoviesData().then((movieData) => createMovieBlocks(movieData))
+	// getMoviesData().then((movieData) => createMovieBlocks(movieData))
 }
 
 const getMoviesData = async () => {
@@ -19,6 +21,8 @@ const getMoviesData = async () => {
 }
 
 const createMovieBlocks = (movieData) => {
+	mainContainerSelector.innerHTML = ''
+
 	movieData.results.forEach((movieInf) => {
 		const { title, overview, poster_path, vote_average } = movieInf
 
@@ -55,5 +59,20 @@ const changeMovieRatingColor = () => {
 		}
 	})
 }
+
+const searchMovie = async (inputText) => {
+	const resp = await fetch(SEARCH_API + inputText)
+	const result = await resp.json()
+
+	console.log(result, 'searchMovie')
+	return result
+}
+
+movieFormSelector.addEventListener('submit', (event) => {
+	event.preventDefault()
+	const inputText = movieInputSelector.value
+
+	searchMovie(inputText).then((data) => createMovieBlocks(data))
+})
 
 init()
