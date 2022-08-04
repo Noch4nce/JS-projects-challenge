@@ -96,7 +96,7 @@ h3 {
 	font-size: 18px;
 }
 
-.show {
+.movie_block:hover .movie_overview {
 	transform: translateY(0%);
 }
 

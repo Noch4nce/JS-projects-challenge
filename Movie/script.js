@@ -48,22 +48,6 @@ const createMovieBlocks = (movieData) => {
 		mainContainerSelector.appendChild(movieBlock)
 	})
 
-	const movieBlockSelector = document.querySelectorAll('.movie_block')
-
-	movieBlockSelector.forEach((block) => {
-		block.addEventListener('mouseover', () => {
-			const currentOverview = block.lastElementChild
-
-			currentOverview.classList.add('show')
-		})
-
-		block.addEventListener('mouseout', () => {
-			const currentOverview = block.lastElementChild
-
-			currentOverview.classList.remove('show')
-		})
-	})
-
 	changeMovieRatingColor()
 }
 
