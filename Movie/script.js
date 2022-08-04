@@ -70,9 +70,13 @@ const searchMovie = async (inputText) => {
 
 movieFormSelector.addEventListener('submit', (event) => {
 	event.preventDefault()
-	const inputText = movieInputSelector.value
+	let inputText = movieInputSelector.value.trim()
 
-	searchMovie(inputText).then((data) => createMovieBlocks(data))
+	if (inputText) {
+		searchMovie(inputText).then((data) => createMovieBlocks(data))
+
+		movieInputSelector.value = ''
+	}
 })
 
 init()
