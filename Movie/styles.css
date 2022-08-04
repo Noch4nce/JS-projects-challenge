@@ -57,6 +57,7 @@ h3 {
 	box-shadow: 0 4px 5px rgba(0, 0, 0, 0.3);
 	width: 300px;
 	overflow: hidden;
+	position: relative;
 }
 
 .movie_info {
@@ -77,6 +78,26 @@ h3 {
 	font-weight: bold;
 	background-color: #22254b;
 	border-radius: 3px;
+}
+
+.movie_overview {
+	overflow: auto;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	background-color: #ffffff;
+	padding: 18px;
+	max-height: 100%;
+	transform: translateY(100%);
+	transition: transform 1s;
+}
+
+.movie_overview p {
+	font-size: 18px;
+}
+
+.show {
+	transform: translateY(0%);
 }
 
 .red {

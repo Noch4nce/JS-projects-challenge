@@ -9,7 +9,7 @@ const movieInputSelector = document.querySelector('.movie_input')
 const movieFormSelector = document.querySelector('.movie_form')
 
 const init = () => {
-	// getMoviesData().then((movieData) => createMovieBlocks(movieData))
+	getMoviesData().then((movieData) => createMovieBlocks(movieData))
 }
 
 const getMoviesData = async () => {
@@ -38,9 +38,30 @@ const createMovieBlocks = (movieData) => {
 				<h3>${title}</h3>
 				<span class="movie_rating">${vote_average}</span>
 			</div>
+			
+			<div class="movie_overview">
+				<h3>Overview:</h3>
+				<p>${overview}</p>
+			</div>
 		`
 
 		mainContainerSelector.appendChild(movieBlock)
+	})
+
+	const movieBlockSelector = document.querySelectorAll('.movie_block')
+
+	movieBlockSelector.forEach((block) => {
+		block.addEventListener('mouseover', () => {
+			const currentOverview = block.lastElementChild
+
+			currentOverview.classList.add('show')
+		})
+
+		block.addEventListener('mouseout', () => {
+			const currentOverview = block.lastElementChild
+
+			currentOverview.classList.remove('show')
+		})
 	})
 
 	changeMovieRatingColor()
