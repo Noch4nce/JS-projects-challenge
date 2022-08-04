@@ -1,2 +1,2 @@
 # Todo app
-## Deploy: movie-nch.netlify.app
+## Deploy: https://movie-nch.netlify.app/
