@@ -6,4 +6,18 @@ body {
 	padding: 0;
 	margin: 0 auto;
 	background-color: #22254b;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	min-height: 100vh;
+}
+
+.gp_input {
+	background-color: #ddeafb;
+	outline: none;
+	font-size: 20px;
+	padding: 8px;
+	border-radius: 10px;
+	border: none;
 }
