@@ -1,15 +1,18 @@
 const GITHUB_PROFILES_API = 'https://api.github.com/users/'
 
 const mainContainerSelector = document.querySelector('.gp_main-container')
+const gpFormSelector = document.querySelector('.gp_form')
+const gpInputSelector = document.querySelector('.gp_input')
 
 const init = () => {
 	getGithubProfile().then((data) => createUserCard(data))
 }
 
-const getGithubProfile = async () => {
-	const defaultProfile = 'Noch4nce'
+const getGithubProfile = async (userInputName) => {
+	const defaultUserName = 'Noch4nce'
+	const userName = userInputName ? userInputName : defaultUserName
 
-	const response = await fetch(GITHUB_PROFILES_API + defaultProfile)
+	const response = await fetch(GITHUB_PROFILES_API + userName)
 	const result = await response.json()
 
 	console.log(result, 'result')
@@ -49,5 +52,14 @@ const createUserCard = (data) => {
 
 	mainContainerSelector.appendChild(userCard)
 }
+
+gpFormSelector.addEventListener('submit', (event) => {
+	event.preventDefault()
+	const userInputName = gpInputSelector.value.trim()
+
+	if (userInputName) {
+		getGithubProfile(userInputName).then((data) => createUserCard(data))
+	}
+})
 
 init()
