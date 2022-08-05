@@ -63,7 +63,7 @@ a {
 }
 
 .gp_stats li {
-	list-style: none;
+	list-style-type: none;
 	margin-right: 60px;
 }
 
