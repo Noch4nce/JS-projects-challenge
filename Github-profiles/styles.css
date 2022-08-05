@@ -5,7 +5,8 @@
 body {
 	padding: 0;
 	margin: 0 auto;
-	background-color: #22254b;
+	background-color: #eec0c6;
+	background-image: linear-gradient(315deg, #eec0c6 0%, #7ee8fa 74%);
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -31,18 +32,35 @@ a {
 	border-radius: 10px;
 	font-family: inherit;
 	border: none;
-	margin-bottom: 20px;
+	margin-bottom: 32px;
 	box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.gp_main-container {
+	position: relative;
 }
 
 .gp_content {
 	max-width: 800px;
 	padding: 40px;
-	background-color: #e3f2fd;
+	background-color: #ddeafb90;
 	border-radius: 20px;
 	box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 	display: flex;
 	justify-content: center;
+}
+
+.gp_background {
+	width: 105%;
+	height: 100%;
+	background-color: #ddeafb40;
+	border-radius: 20px;
+	position: absolute;
+	top: -22px;
+	left: -22px;
+	z-index: -1;
+	box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+	border: 1px solid #eeeeee;
 }
 
 .gp_avatar {

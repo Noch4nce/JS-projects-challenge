@@ -37,6 +37,8 @@ const createUserCard = (data) => {
 	mainContainerSelector.innerHTML = ''
 	const userCard = document.createElement('div')
 	userCard.classList.add('gp_content')
+	const gpBackground = document.createElement('div')
+	gpBackground.classList.add('gp_background')
 
 	userCard.innerHTML = `
 		<div>
@@ -60,6 +62,7 @@ const createUserCard = (data) => {
 	`
 
 	mainContainerSelector.appendChild(userCard)
+	mainContainerSelector.appendChild(gpBackground)
 }
 
 const createUserRepos = (data) => {
