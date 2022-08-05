@@ -88,8 +88,9 @@ gpFormSelector.addEventListener('submit', (event) => {
 
 	if (userInputName) {
 		getGithubProfile(userInputName).then((data) => createUserCard(data))
-
 		getUserRepos(userInputName).then((data) => createUserRepos(data))
+
+		gpInputSelector.value = ''
 	}
 })
 
