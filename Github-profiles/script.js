@@ -65,10 +65,10 @@ const createUserCard = (data) => {
 const createUserRepos = (data) => {
 	const gpLinksSelector = document.querySelector('.gp_links')
 
-	data.filter((dataEl, i) => {
-		const { name, html_url } = dataEl
-
-		if (i < 10) {
+	data.sort((a, b) => b.size - a.size)
+		.slice(0, 10)
+		.forEach((dataEl) => {
+			const { name, html_url } = dataEl
 			const linkNode = document.createElement('a')
 
 			linkNode.href = html_url
@@ -76,8 +76,7 @@ const createUserRepos = (data) => {
 			linkNode.target = '_blank'
 
 			gpLinksSelector.appendChild(linkNode)
-		}
-	})
+		})
 }
 
 gpFormSelector.addEventListener('submit', (event) => {
