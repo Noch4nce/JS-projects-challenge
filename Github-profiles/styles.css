@@ -11,6 +11,17 @@ body {
 	align-items: center;
 	flex-direction: column;
 	min-height: 100vh;
+	font-size: 18px;
+}
+
+h2 {
+	margin: 0;
+}
+
+
+a {
+	text-decoration: none;
+	color: inherit;
 }
 
 .gp_input {
@@ -21,3 +32,43 @@ body {
 	border-radius: 10px;
 	border: none;
 }
+
+.gp_content {
+	max-width: 800px;
+	padding: 40px;
+	margin-top: 20px;
+	background-color: #e3f2fd;
+	border-radius: 30px;
+	display: flex;
+	justify-content: center;
+}
+
+.gp_avatar {
+	width: 150px;
+	border-radius: 50%;
+	border: 8px solid black;
+}
+
+.gp_info {
+	padding: 10px 30px;
+}
+
+.gp_stats {
+	padding: 0;
+	display: flex;
+	align-items: center;
+}
+
+.gp_stats li {
+	list-style: none;
+	margin-right: 60px;
+}
+
+.gp_links a {
+	font-size: 16px;
+	background-color: #528ecc;
+	padding: 6px 8px;
+	border-radius: 4px;
+}
+
+
