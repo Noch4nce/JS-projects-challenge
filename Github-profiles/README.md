@@ -1,2 +1,2 @@
 # Github profiles
-## Deploy:
+## Deploy: https://github-profiles-nch.netlify.app/
