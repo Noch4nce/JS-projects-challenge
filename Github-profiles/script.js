@@ -4,9 +4,10 @@ const mainContainerSelector = document.querySelector('.gp_main-container')
 const gpFormSelector = document.querySelector('.gp_form')
 const gpInputSelector = document.querySelector('.gp_input')
 
-const init = async () => {
-	// getUserRepos().then((data) => createUserRepos(data))
+const init = () => {
 	getGithubProfile().then((data) => createUserCard(data))
+
+	getUserRepos().then((data) => createUserRepos(data))
 }
 
 const getGithubProfile = async (userInputName) => {
@@ -31,14 +32,11 @@ const getUserRepos = async (userInputName) => {
 	return result
 }
 
-const createUserCard = async (data) => {
+const createUserCard = (data) => {
 	const { avatar_url, bio, followers, following, public_repos, name } = data
 	mainContainerSelector.innerHTML = ''
 	const userCard = document.createElement('div')
 	userCard.classList.add('gp_content')
-	const qwe = await test()
-	const asd = createUserRepos(qwe)
-	console.log(qwe, 'ASD')
 
 	userCard.innerHTML = `
 		<div>
@@ -57,28 +55,17 @@ const createUserCard = async (data) => {
 				<li>${following} <strong>Following</strong></li>
 				<li>${public_repos} <strong>Repos</strong></li>
 			</ul>
-			<div class='gp_links'>
-			</div>
+			<div class='gp_links'></div>
 		</div>
 	`
 
 	mainContainerSelector.appendChild(userCard)
-	const link = document.querySelector('.gp_links')
-	link.appendChild(asd)
-	console.log(link, "link")
-
-}
-
-const test = async () => {
-	const asd = await getUserRepos()
-
-	return asd
 }
 
 const createUserRepos = (data) => {
-	const div = document.createElement('div')
+	const gpLinksSelector = document.querySelector('.gp_links')
 
-	data.forEach((dataEl, i) => {
+	data.filter((dataEl, i) => {
 		const { name, html_url } = dataEl
 
 		if (i < 10) {
@@ -88,15 +75,9 @@ const createUserRepos = (data) => {
 			linkNode.innerText = name
 			linkNode.target = '_blank'
 
-			div.appendChild(linkNode)
-		} else {
-			return
+			gpLinksSelector.appendChild(linkNode)
 		}
 	})
-
-	console.log(div, 'DATA')
-
-	return div
 }
 
 gpFormSelector.addEventListener('submit', (event) => {
@@ -105,6 +86,8 @@ gpFormSelector.addEventListener('submit', (event) => {
 
 	if (userInputName) {
 		getGithubProfile(userInputName).then((data) => createUserCard(data))
+
+		getUserRepos(userInputName).then((data) => createUserRepos(data))
 	}
 })
 
