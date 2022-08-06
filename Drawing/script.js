@@ -4,7 +4,7 @@ const plusSelector = document.querySelector('.plus')
 const sizeSelector = document.querySelector('.size')
 
 const ctx = canvasSelector.getContext('2d')
-let size = 20
+let size = 10
 let isPressed = false
 let x = 60
 let y = 60
@@ -38,4 +38,25 @@ canvasSelector.addEventListener('mousemove', (event) => {
 	}
 })
 
-// draw()
+minusSelector.addEventListener('click', () => {
+	size = size - 5
+
+	if (size === 5) {
+		minusSelector.disabled = true
+	}
+
+	plusSelector.disabled = false
+	sizeSelector.innerHTML = size
+})
+
+plusSelector.addEventListener('click', () => {
+	size = size + 5
+
+	if (size === 50) {
+		console.log('QWEWQE')
+		plusSelector.disabled = true
+	}
+
+	minusSelector.disabled = false
+	sizeSelector.innerHTML = size
+})
