@@ -2,6 +2,7 @@ const canvasSelector = document.querySelector('.canvas')
 const decreasedSelector = document.querySelector('.decreased')
 const increasedSelector = document.querySelector('.increased')
 const sizeSelector = document.querySelector('.size')
+const colorPickerSelector = document.querySelector('.color_picker')
 
 const ctx = canvasSelector.getContext('2d')
 let size = 10
@@ -58,4 +59,8 @@ increasedSelector.addEventListener('click', () => {
 
 	decreasedSelector.disabled = false
 	sizeSelector.innerText = size
+})
+
+colorPickerSelector.addEventListener('input', () => {
+	ctx.fillStyle = colorPickerSelector.value;
 })
