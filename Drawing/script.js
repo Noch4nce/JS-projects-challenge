@@ -3,6 +3,7 @@ const decreasedSelector = document.querySelector('.decreased')
 const increasedSelector = document.querySelector('.increased')
 const sizeSelector = document.querySelector('.size')
 const colorPickerSelector = document.querySelector('.color_picker')
+const clearBtnSelector = document.querySelector('.clear')
 
 const ctx = canvasSelector.getContext('2d')
 let size = 10
@@ -27,12 +28,6 @@ function drawLine(x1, y1, x2, y2) {
 	ctx.stroke()
 }
 
-// const draw = () => {
-// 	ctx.clearRect(0, 0, canvasSelector.width, canvasSelector.height)
-//
-// 	drawingCircle(x, y)
-// 	requestAnimationFrame(draw)
-// }
 canvasSelector.addEventListener('mousedown', (event) => {
 	isPressed = true
 
@@ -54,8 +49,7 @@ canvasSelector.addEventListener('mousemove', (event) => {
 
 		drawingCircle(x2, y2)
 
-		// DRAWLINE maybe if u have small fps
-		// drawLine(x, y, x2, y2);
+		drawLine(x, y, x2, y2);
 		x = x2
 		y = y2
 	}
@@ -85,4 +79,8 @@ increasedSelector.addEventListener('click', () => {
 
 colorPickerSelector.addEventListener('input', () => {
 	color = colorPickerSelector.value
+})
+
+clearBtnSelector.addEventListener('click', () => {
+	ctx.clearRect(0, 0, canvasSelector.width, canvasSelector.height)
 })
