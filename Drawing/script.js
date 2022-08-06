@@ -8,8 +8,8 @@ const ctx = canvasSelector.getContext('2d')
 let size = 10
 let color = 'black'
 let isPressed = false
-let x = 60
-let y = 60
+let x = undefined
+let y = undefined
 
 const drawingCircle = (x, y) => {
 	ctx.beginPath()
@@ -18,26 +18,46 @@ const drawingCircle = (x, y) => {
 	ctx.fill()
 }
 
+function drawLine(x1, y1, x2, y2) {
+	ctx.beginPath()
+	ctx.moveTo(x1, y1)
+	ctx.lineTo(x2, y2)
+	ctx.strokeStyle = color
+	ctx.lineWidth = size * 2
+	ctx.stroke()
+}
+
 // const draw = () => {
 // 	ctx.clearRect(0, 0, canvasSelector.width, canvasSelector.height)
 //
 // 	drawingCircle(x, y)
 // 	requestAnimationFrame(draw)
 // }
-canvasSelector.addEventListener('mousedown', () => {
+canvasSelector.addEventListener('mousedown', (event) => {
 	isPressed = true
+
+	x = event.offsetX
+	y = event.offsetY
 })
 
 canvasSelector.addEventListener('mouseup', () => {
 	isPressed = false
+
+	x = undefined
+	y = undefined
 })
 
 canvasSelector.addEventListener('mousemove', (event) => {
 	if (isPressed) {
-		const x = event.offsetX
-		const y = event.offsetY
+		const x2 = event.offsetX
+		const y2 = event.offsetY
 
-		drawingCircle(x, y)
+		drawingCircle(x2, y2)
+
+		// DRAWLINE maybe if u have small fps
+		// drawLine(x, y, x2, y2);
+		x = x2
+		y = y2
 	}
 })
 
@@ -64,5 +84,5 @@ increasedSelector.addEventListener('click', () => {
 })
 
 colorPickerSelector.addEventListener('input', () => {
-	color = colorPickerSelector.value;
+	color = colorPickerSelector.value
 })
