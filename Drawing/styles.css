@@ -36,3 +36,8 @@ body {
 	border: none;
 	margin-right: 10px;
 }
+
+.color_picker {
+	width: 30px;
+	height: 30px;
+}
