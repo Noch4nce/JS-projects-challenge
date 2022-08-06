@@ -1,6 +1,6 @@
 const canvasSelector = document.querySelector('.canvas')
-const minusSelector = document.querySelector('.minus')
-const plusSelector = document.querySelector('.plus')
+const decreasedSelector = document.querySelector('.decreased')
+const increasedSelector = document.querySelector('.increased')
 const sizeSelector = document.querySelector('.size')
 
 const ctx = canvasSelector.getContext('2d')
@@ -38,25 +38,24 @@ canvasSelector.addEventListener('mousemove', (event) => {
 	}
 })
 
-minusSelector.addEventListener('click', () => {
-	size = size - 5
+decreasedSelector.addEventListener('click', () => {
+	size -= 5
 
 	if (size === 5) {
-		minusSelector.disabled = true
+		decreasedSelector.disabled = true
 	}
 
-	plusSelector.disabled = false
-	sizeSelector.innerHTML = size
+	increasedSelector.disabled = false
+	sizeSelector.innerText = size
 })
 
-plusSelector.addEventListener('click', () => {
-	size = size + 5
+increasedSelector.addEventListener('click', () => {
+	size += 5
 
 	if (size === 50) {
-		console.log('QWEWQE')
-		plusSelector.disabled = true
+		increasedSelector.disabled = true
 	}
 
-	minusSelector.disabled = false
-	sizeSelector.innerHTML = size
+	decreasedSelector.disabled = false
+	sizeSelector.innerText = size
 })
