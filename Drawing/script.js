@@ -1,7 +1,9 @@
 const canvasSelector = document.querySelector('.canvas')
 
 const ctx = canvasSelector.getContext('2d')
-const size = 30
+let size = 30
+let x = 60
+let y = 60
 
 const drawingCircle = (x, y) => {
 	ctx.beginPath()
@@ -9,4 +11,11 @@ const drawingCircle = (x, y) => {
 	ctx.stroke()
 }
 
-drawingCircle(60, 60)
+const draw = () => {
+	ctx.clearRect(0, 0, canvasSelector.width, canvasSelector.height)
+
+	drawingCircle(x, y)
+	requestAnimationFrame(draw)
+}
+
+draw()
