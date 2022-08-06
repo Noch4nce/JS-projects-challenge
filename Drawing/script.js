@@ -1,7 +1,11 @@
 const canvasSelector = document.querySelector('.canvas')
+const minusSelector = document.querySelector('.minus')
+const plusSelector = document.querySelector('.plus')
+const sizeSelector = document.querySelector('.size')
 
 const ctx = canvasSelector.getContext('2d')
-let size = 30
+let size = 20
+let isPressed = false
 let x = 60
 let y = 60
 
@@ -17,12 +21,21 @@ const drawingCircle = (x, y) => {
 // 	drawingCircle(x, y)
 // 	requestAnimationFrame(draw)
 // }
+canvasSelector.addEventListener('mousedown', () => {
+	isPressed = true
+})
 
-canvasSelector.addEventListener('mousedown', (event) => {
-	const x = event.offsetX
-	const y = event.offsetY
+canvasSelector.addEventListener('mouseup', () => {
+	isPressed = false
+})
 
-	drawingCircle(x, y)
+canvasSelector.addEventListener('mousemove', (event) => {
+	if (isPressed) {
+		const x = event.offsetX
+		const y = event.offsetY
+
+		drawingCircle(x, y)
+	}
 })
 
 // draw()
