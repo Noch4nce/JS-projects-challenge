@@ -6,4 +6,13 @@ body {
 	padding: 0;
 	margin: 0 auto;
 	background-color: #7ee8fa;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-height: 100vh;
+}
+
+.canvas {
+	border: 2px solid black;
+	background-color: #eeeeee;
 }
