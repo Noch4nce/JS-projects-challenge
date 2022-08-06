@@ -7,9 +7,10 @@
 	</head>
 	<body>
 		<div class="main_container">
-			<div class="pw_content">
+			<div class='pw_header'>
 				<span>pass</span>
-
+			</div>
+			<div class="pw_body">
 				<div class='pw_setting'>
 					<label for="toggle-button_upper" class="text">A-Z</label>
 					<input type="checkbox" name="toggle" id="toggle-button_upper" class="toggle-button">
@@ -22,6 +23,13 @@
 
 					<label for="toggle-button_symbol" class="text">!@#$%^&*</label>
 					<input type="checkbox" name="toggle" id="toggle-button_symbol" class="toggle-button">
+
+					<label for="toggle-button_length">Password Length</label>
+					<input type="number" id="toggle-button_length">
+				</div>
+
+				<div>
+					<button>Generate</button>
 				</div>
 			</div>
 		</div>
