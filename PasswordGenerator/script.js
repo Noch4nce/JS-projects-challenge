@@ -1,6 +1,7 @@
 const lowerCaseSelector = document.getElementById('toggle-button_lower')
 const upperCaseSelector = document.getElementById('toggle-button_upper')
 const numberSelector = document.getElementById('toggle-button_number')
+const symbolSelector = document.getElementById('toggle-button_symbol')
 const generateBtnSelector = document.getElementById('pw_generate')
 const pwInputSelector = document.getElementById('pw_pass')
 
@@ -8,6 +9,7 @@ let pwLength = 5
 let isLowerCaseChecked = false
 let isUpperCaseChecked = false
 let isNumberChecked = false
+let isSymbolChecked = false
 const lowerCharacters = 'abcdefghijklmnopqrstuvwxyz'
 const upperCharacters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 const numbers = '0123456789'
@@ -57,6 +59,18 @@ const generatedNumbers = () => {
 	pwInputSelector.innerText = res
 }
 
+const generatedSymbols = () => {
+	let res = ''
+
+	for (let i = 0; i < pwLength; i++) {
+		const randomNumber = symbols[Math.floor(Math.random() * symbols.length)]
+
+		res = res += randomNumber
+	}
+
+	pwInputSelector.innerText = res
+}
+
 const generatedUpperAndLoverCase = () => {
 	let res = ''
 
@@ -84,6 +98,10 @@ numberSelector.addEventListener('click', (e) => {
 	isNumberChecked = e.target.checked
 })
 
+symbolSelector.addEventListener('click', (e) => {
+	isSymbolChecked = e.target.checked
+})
+
 generateBtnSelector.addEventListener('click', () => {
 	if (isLowerCaseChecked && isUpperCaseChecked) {
 		generatedUpperAndLoverCase()
@@ -93,5 +111,7 @@ generateBtnSelector.addEventListener('click', () => {
 		generatedUpperCase()
 	} else if (isNumberChecked) {
 		generatedNumbers()
+	} else if (isSymbolChecked) {
+		generatedSymbols()
 	}
 })
