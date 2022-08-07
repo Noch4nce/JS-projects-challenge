@@ -31,6 +31,9 @@ const upperAndLoverAndSymbolsCharacters =
 const upperAndNumbersAndSymbolsCharacters = upperCharacters + numbers + symbols
 const lowerAndNumberAndSymbolsCharacters = lowerCharacters + numbers + symbols
 
+const upperAndLoverAndNumberAndSymbolsCharacters =
+	upperCharacters + lowerCharacters + numbers + symbols
+
 const generatedLowerCase = () => {
 	let res = ''
 
@@ -231,6 +234,24 @@ const generatedLowerAndNumberAndSymbolsCase = () => {
 	pwInputSelector.innerText = res
 }
 
+const generatedUpperAndLowerAndNumberAndSymbolsCase = () => {
+	let res = ''
+
+	for (let i = 0; i < pwLength; i++) {
+		const randomCharacter =
+			upperAndLoverAndNumberAndSymbolsCharacters[
+				Math.floor(
+					Math.random() *
+						upperAndLoverAndNumberAndSymbolsCharacters.length
+				)
+			]
+
+		res = res += randomCharacter
+	}
+
+	pwInputSelector.innerText = res
+}
+
 lowerCaseSelector.addEventListener('click', (e) => {
 	isLowerCaseChecked = e.target.checked
 })
@@ -248,7 +269,14 @@ symbolSelector.addEventListener('click', (e) => {
 })
 
 generateBtnSelector.addEventListener('click', () => {
-	if (isLowerCaseChecked && isNumberChecked && isSymbolChecked) {
+	if (
+		isUpperCaseChecked &&
+		isLowerCaseChecked &&
+		isNumberChecked &&
+		isSymbolChecked
+	) {
+		generatedUpperAndLowerAndNumberAndSymbolsCase()
+	} else if (isLowerCaseChecked && isNumberChecked && isSymbolChecked) {
 		generatedLowerAndNumberAndSymbolsCase()
 	} else if (isUpperCaseChecked && isLowerCaseChecked && isNumberChecked) {
 		generatedUpperAndLowerAndNumberCase()
