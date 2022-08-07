@@ -6,17 +6,23 @@ const generateBtnSelector = document.getElementById('pw_generate')
 const pwInputSelector = document.getElementById('pw_pass')
 
 let pwLength = 5
+
 let isLowerCaseChecked = false
 let isUpperCaseChecked = false
 let isNumberChecked = false
 let isSymbolChecked = false
+
 const lowerCharacters = 'abcdefghijklmnopqrstuvwxyz'
 const upperCharacters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 const numbers = '0123456789'
 const symbols = '!@#$%^&*()_+'
-const upperAndLoverCharacters = lowerCharacters + upperCharacters
+
+const upperAndLoverCharacters = upperCharacters + lowerCharacters
 const upperAndNumbers = upperCharacters + numbers
 const upperAndSymbols = upperCharacters + symbols
+
+const loverAndNumber = lowerCharacters + numbers
+const loverAndSymbols = lowerCharacters + symbols
 
 // let asd = (Math.random())
 // let qwe = (0.17749028285925537 * 26)
@@ -114,6 +120,32 @@ const generatedUpperAndSymbolsCase = () => {
 	pwInputSelector.innerText = res
 }
 
+const generatedLowerAndNumbersCase = () => {
+	let res = ''
+
+	for (let i = 0; i < pwLength; i++) {
+		const randomCharacter =
+			loverAndNumber[Math.floor(Math.random() * loverAndNumber.length)]
+
+		res = res += randomCharacter
+	}
+
+	pwInputSelector.innerText = res
+}
+
+const generatedLowerAndSymbolsCase = () => {
+	let res = ''
+
+	for (let i = 0; i < pwLength; i++) {
+		const randomCharacter =
+			loverAndSymbols[Math.floor(Math.random() * loverAndSymbols.length)]
+
+		res = res += randomCharacter
+	}
+
+	pwInputSelector.innerText = res
+}
+
 lowerCaseSelector.addEventListener('click', (e) => {
 	isLowerCaseChecked = e.target.checked
 })
@@ -131,7 +163,11 @@ symbolSelector.addEventListener('click', (e) => {
 })
 
 generateBtnSelector.addEventListener('click', () => {
-	if (isUpperCaseChecked && isNumberChecked) {
+	if (isLowerCaseChecked && isNumberChecked) {
+		generatedLowerAndNumbersCase()
+	} else if (isLowerCaseChecked && isSymbolChecked) {
+		generatedLowerAndSymbolsCase()
+	} else if (isUpperCaseChecked && isNumberChecked) {
 		generatedUpperAndNumberCase()
 	} else if (isUpperCaseChecked && isSymbolChecked) {
 		generatedUpperAndSymbolsCase()
