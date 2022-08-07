@@ -8,6 +8,8 @@ let isLowerCaseChecked = false
 let isUpperCaseChecked = false
 const lowerCharacters = 'abcdefghijklmnopqrstuvwxyz'
 const upperCharacters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+const upperAndLoverCharacters = lowerCharacters + upperCharacters
+let res = ''
 
 // let asd = (Math.random())
 // let qwe = (0.17749028285925537 * 26)
@@ -15,8 +17,6 @@ const upperCharacters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 // console.log(qwe, "WQE")
 
 const generatedLowerCase = () => {
-	let res = ''
-
 	for (let i = 0; i < pwLength; i++) {
 		const randomCharacter =
 			lowerCharacters[Math.floor(Math.random() * lowerCharacters.length)]
@@ -28,11 +28,22 @@ const generatedLowerCase = () => {
 }
 
 const generatedUpperCase = () => {
-	let res = ''
-
 	for (let i = 0; i < pwLength; i++) {
 		const randomCharacter =
 			upperCharacters[Math.floor(Math.random() * upperCharacters.length)]
+
+		res = res += randomCharacter
+	}
+
+	pwInputSelector.innerText = res
+}
+
+const generatedUpperAndLoverCase = () => {
+	for (let i = 0; i < pwLength; i++) {
+		const randomCharacter =
+			upperAndLoverCharacters[
+				Math.floor(Math.random() * upperAndLoverCharacters.length)
+			]
 
 		res = res += randomCharacter
 	}
@@ -49,11 +60,11 @@ upperCaseSelector.addEventListener('click', (e) => {
 })
 
 generateBtnSelector.addEventListener('click', () => {
-	if (isLowerCaseChecked) {
+	if (isLowerCaseChecked && isUpperCaseChecked) {
+		generatedUpperAndLoverCase()
+	} else if (isLowerCaseChecked) {
 		generatedLowerCase()
-	}
-
-	if (isUpperCaseChecked) {
+	} else if (isUpperCaseChecked) {
 		generatedUpperCase()
 	}
 })
