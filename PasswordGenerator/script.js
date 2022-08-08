@@ -4,6 +4,7 @@ const numberSelector = document.getElementById('toggle-button_number')
 const symbolSelector = document.getElementById('toggle-button_symbol')
 const pwLengthSelector = document.getElementById('toggle-button_length')
 const generateBtnSelector = document.getElementById('pw_generate')
+const copyBtnSelector = document.getElementById('pw_copy')
 const pwInputSelector = document.getElementById('pw_pass')
 
 let pwLength = 5
@@ -271,6 +272,14 @@ symbolSelector.addEventListener('click', (e) => {
 
 pwLengthSelector.addEventListener('change', (e) => {
 	pwLength = e.target.value
+})
+
+copyBtnSelector.addEventListener('click', () => {
+	const currentPass = pwInputSelector.innerText
+
+	navigator.clipboard
+		.writeText(currentPass)
+		.then(() => alert(`Password Copied: ${currentPass}`))
 })
 
 generateBtnSelector.addEventListener('click', () => {
