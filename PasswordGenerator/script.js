@@ -2,6 +2,7 @@ const lowerCaseSelector = document.getElementById('toggle-button_lower')
 const upperCaseSelector = document.getElementById('toggle-button_upper')
 const numberSelector = document.getElementById('toggle-button_number')
 const symbolSelector = document.getElementById('toggle-button_symbol')
+const pwLengthSelector = document.getElementById('toggle-button_length')
 const generateBtnSelector = document.getElementById('pw_generate')
 const pwInputSelector = document.getElementById('pw_pass')
 
@@ -266,6 +267,10 @@ numberSelector.addEventListener('click', (e) => {
 
 symbolSelector.addEventListener('click', (e) => {
 	isSymbolChecked = e.target.checked
+})
+
+pwLengthSelector.addEventListener('change', (e) => {
+	pwLength = e.target.value
 })
 
 generateBtnSelector.addEventListener('click', () => {
