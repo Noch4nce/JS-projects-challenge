@@ -1,2 +1,2 @@
 # Password Generator
-## Deploy:
+## Deploy: https://pw-nch.netlify.app/
