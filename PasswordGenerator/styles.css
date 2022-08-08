@@ -45,6 +45,7 @@ input {
 .pw_setting {
 	display: flex;
 	justify-content: space-between;
+	align-items: center;
 	margin-bottom: 10px;
 }
 
@@ -76,12 +77,12 @@ input {
 
 .toggle-button {
 	position: relative;
-	width: 100px;
-	height: 50px;
+	width: 36px;
+	height: 20px;
 	margin: 0;
 	vertical-align: top;
-	background: #ffffff;
-	border: 1px solid #bbc1e1;
+	background: #adb5bd;
+	border: none;
 	border-radius: 30px;
 	outline: none;
 	cursor: pointer;
@@ -94,11 +95,11 @@ input {
 .toggle-button::after {
 	content: '';
 	position: absolute;
-	left: 3px;
-	top: 1.5px;
-	width: 45px;
-	height: 45px;
-	background-color: blue;
+	left: -14px;
+	top: -7px;
+	width: 30px;
+	height: 32px;
+	background-color: #eeeeee;
 	border-radius: 50%;
 	transform: translateX(0);
 	transition: all 0.3s cubic-bezier(0.2, 0.85, 0.32, 1.2);
@@ -106,9 +107,18 @@ input {
 
 .toggle-button:checked::after {
 	transform: translateX(calc(100% + 3px));
-	background-color: #fff;
+	background-color: #00b4d8;
 }
 
 .toggle-button:checked {
-	background-color: blue;
+	background-color: #7bdff2;
+}
+
+.pw_length {
+	width: 48px;
+	height: 30px;
+}
+
+input[type='number'] {
+	font-size: 20px;
 }
