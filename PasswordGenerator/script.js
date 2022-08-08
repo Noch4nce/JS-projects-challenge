@@ -5,6 +5,7 @@ const symbolSelector = document.getElementById('toggle-button_symbol')
 const pwLengthSelector = document.getElementById('toggle-button_length')
 const generateBtnSelector = document.getElementById('pw_generate')
 const copyBtnSelector = document.getElementById('pw_copy')
+const copyInputBtnSelector = document.getElementById('pw_copy-input')
 const pwInputSelector = document.getElementById('pw_pass')
 
 let pwLength = 5
@@ -84,6 +85,12 @@ const generateX = () => {
 	}
 
 	return xs[Math.floor(Math.random() * xs.length)]
+}
+
+const setClipboard = (currentPass) => {
+	navigator.clipboard
+		.writeText(currentPass)
+		.then(() => alert(`Password Copied: ${currentPass}`))
 }
 
 // const generatedLowerCase = () => {
@@ -324,9 +331,13 @@ pwLengthSelector.addEventListener('change', (e) => {
 copyBtnSelector.addEventListener('click', () => {
 	const currentPass = pwInputSelector.innerText
 
-	navigator.clipboard
-		.writeText(currentPass)
-		.then(() => alert(`Password Copied: ${currentPass}`))
+	setClipboard(currentPass)
+})
+
+copyInputBtnSelector.addEventListener('click', () => {
+	const currentPass = pwInputSelector.innerText
+
+	setClipboard(currentPass)
 })
 
 // lowerCaseSelector.addEventListener('click', (e) => {
