@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<title>Password Generator</title>
+		<link rel="stylesheet" href="./styles.css" />
+	</head>
+	<body>
+		<div class="main_container">
+			<div class="pw_header">
+				<span id="pw_pass">Generate a password</span>
+				<button id="pw_copy-input" class="pw_input-copy">Copy</button>
+			</div>
+			<div class="pw_body">
+				<div class="pw_setting">
+					<label for="toggle-button_upper" class="text">A-Z</label>
+					<input
+						type="checkbox"
+						name="toggle"
+						id="toggle-button_upper"
+						class="toggle-button"
+					/>
+				</div>
+
+				<div class="pw_setting">
+					<label for="toggle-button_lower" class="text">a-z</label>
+					<input
+						type="checkbox"
+						name="toggle"
+						id="toggle-button_lower"
+						class="toggle-button"
+					/>
+				</div>
+
+				<div class="pw_setting">
+					<label for="toggle-button_number" class="text">0-9</label>
+					<input
+						type="checkbox"
+						name="toggle"
+						id="toggle-button_number"
+						class="toggle-button"
+					/>
+				</div>
+
+				<div class="pw_setting">
+					<label for="toggle-button_symbol" class="text"
+						>!@#$%^&*</label
+					>
+					<input
+						type="checkbox"
+						name="toggle"
+						id="toggle-button_symbol"
+						class="toggle-button"
+					/>
+				</div>
+
+				<div class="pw_setting">
+					<label for="toggle-button_length" class="text"
+						>Password Length</label
+					>
+					<input
+						type="number"
+						id="toggle-button_length"
+						class="pw_length"
+						value="5"
+						min="4"
+						max="15"
+						onkeydown="return false"
+					/>
+				</div>
+
+				<div class="pw_controls">
+					<button id="pw_generate">Generate</button>
+					<button id="pw_copy">Copy</button>
+				</div>
+			</div>
+		</div>
+	</body>
+
+	<script src="./script.js"></script>
+</html>
