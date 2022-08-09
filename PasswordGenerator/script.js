@@ -78,7 +78,7 @@ const generatePassword = () => {
 		pw += x
 	}
 
-	pwInputSelector.innerText = pw
+	pwInputSelector.innerText = shufflePassword(pw)
 }
 
 const generateX = () => {
@@ -101,6 +101,25 @@ const generateX = () => {
 	}
 
 	return xs[Math.floor(Math.random() * xs.length)]
+}
+
+function getRandomInt(pwLength) {
+	return Math.floor(Math.random() * pwLength);
+}
+
+function shufflePassword(password) {
+	const pwArr = password.split('');
+	const pwLength = pwArr.length;
+
+	for(let i = 0; i < pwLength; i++) {
+		const j = getRandomInt(pwLength);
+		const temp = pwArr[i];
+
+		pwArr[i] = pwArr[j];
+		pwArr[j] = temp;
+	}
+
+	return pwArr.join('');
 }
 
 const setClipboard = (currentPass) => {
