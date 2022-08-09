@@ -57,7 +57,23 @@ const generatePassword = () => {
 	const pwl = pwLengthSelector.value
 	let pw = ''
 
-	for (let i = 0; i < pwl; i++) {
+	if (upperCaseSelector.checked) {
+		pw += getUpperCase()
+	}
+
+	if (lowerCaseSelector.checked) {
+		pw += getLowerCase()
+	}
+
+	if (numberSelector.checked) {
+		pw += getNumber()
+	}
+
+	if (symbolSelector.checked) {
+		pw += getSymbols()
+	}
+
+	for (let i = pw.length; i < pwl; i++) {
 		const x = generateX()
 		pw += x
 	}
