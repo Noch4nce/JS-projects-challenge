@@ -1,2 +1,2 @@
 # Weather app
-## Deploy:
+## Deploy: https://weather-nch.netlify.app
