@@ -1,0 +1,10 @@
+* {
+	box-sizing: border-box;
+}
+
+body {
+	padding: 0;
+	margin: 0 auto;
+	background-color: #7ee8fa;
+	font-size: 18px;
+}
