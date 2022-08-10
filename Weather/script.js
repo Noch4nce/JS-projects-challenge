@@ -14,4 +14,4 @@ const getWeatherData = async () => {
 	return result
 }
 
-init()
+// init()
